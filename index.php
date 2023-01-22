@@ -17,7 +17,7 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2">
                             <li class="nav-item">
-                                <a href="#" class="nav-item active">Home</a>
+                                <a href="#" class="nav-item active">Homee</a>
                             </li>
                             <li class="nav-item">HeadStones</li>
                             <li class="nav-item">Advice</li>
