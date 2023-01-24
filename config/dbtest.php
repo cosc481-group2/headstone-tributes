@@ -4,6 +4,7 @@
     $password = "YO`lO|Pp`)841j6*";
     $dbName = "testdb"; 
     $instanceHost = "10.99.240.3";
+    $instanceUnixSocket = '/cloudsql/cosc571:us-central1:mysqladmin';
 
     //$username = "COSC571USER"; 
     //$password = "hhJVw5PPlxVQdpMH"; 
@@ -12,7 +13,13 @@
 
     try {
         // Connect using TCP
-        $dsn = sprintf('mysql:dbname=%s;host=%s', $dbName, $instanceHost);
+        //$dsn = sprintf('mysql:dbname=%s;host=%s', $dbName, $instanceHost);
+        
+        $dsn = sprintf(
+                'mysql:dbname=%s;unix_socket=%s',
+                $dbName,
+                $instanceUnixSocket
+            );
 
         // Connect to the database
         $conn = new PDO(
