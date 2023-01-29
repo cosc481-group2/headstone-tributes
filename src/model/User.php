@@ -4,8 +4,10 @@ declare(strict_types = 1);
 
 namespace MODEL;
 
-class User {
+use JsonSerializable;
 
+class User implements JsonSerializable 
+{
     private int $user_id;
     private string $user_name;
     private string $first_name;
@@ -60,6 +62,11 @@ class User {
     public function setEmail(string $email)
     {
         $this->email = $email;
+    }
+
+    public function jsonSerialize() : mixed
+    {
+        return get_object_vars($this);
     }
 
 }

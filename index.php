@@ -27,7 +27,7 @@
             </nav>
         </div>
         <div class="row p-0">
-            <img src="img/pexels-koolshooters-6495720.jpg" alt="" class="img-fluid p-0 vh-100">
+            <img src="/public/img/pexels-koolshooters-6495720.jpg" alt="" class="img-fluid p-0 vh-100">
         </div>
         <div class="row"> 
             <div class="p-3 col bg-secondary bg-gradient h-50"> column </div>

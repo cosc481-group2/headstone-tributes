@@ -6,6 +6,9 @@ COPY . /var/www/html/
 # COPY ./inifile $PHP_INI_DIR/conf.d/
 #RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+RUN apt-get update && apt-get install -y \
+    curl \
+    vim
+
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN docker-php-ext-install pdo pdo_mysql
-RUN apt-get update && apt-get upgrade -y
