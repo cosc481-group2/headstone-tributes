@@ -124,7 +124,7 @@
 
                 console.log(formdata);
 
-                $.post("/src/controller/UserController.php", formdata)
+                $.post("/src/controller/UserController", formdata)
                     .done(function(data) {
                         console.log(data);
                         populateUserTable();
@@ -139,7 +139,7 @@
 
                 formdata = `user_id=${id}&func=del`;
 
-                $.post("/src/controller/UserController.php", formdata)
+                $.post("/src/controller/UserController", formdata)
                     .done(function(data) {
                         
                         populateUserTable();
@@ -149,7 +149,7 @@
 
             function populateUserTable() {
                 $('.user-table-body').empty();
-                $.get("/src/controller/UserController.php?func=all", function(data, status) {
+                $.get("/src/controller/UserController?func=all", function(data, status) {
                               
                     console.log(data);
 
