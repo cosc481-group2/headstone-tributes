@@ -6,7 +6,7 @@ namespace MODEL;
 
 use JsonSerializable;
 
-class Cemeteries implements JsonSerializable {
+class Country implements JsonSerializable {
 
     private string $con_id;
     private string $country;
