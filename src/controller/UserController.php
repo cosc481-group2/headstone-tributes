@@ -20,7 +20,7 @@ function getAllUsers()
 function getUser()
 {
     $service = new userService();
-    $user = $service->getUser(4);
+    $user = $service->getUser($_GET["user_id"]);
     echo json_encode($user, JSON_PRETTY_PRINT);
     return;
 }
@@ -51,29 +51,35 @@ function deleteUser()
     return;
 }
 
+# Check is FUNC param is set for either GET or POST and excute the value
 if(isset($_GET["func"]))
 {
     $func = $_GET["func"];
+
+    switch($func) 
+    {
+        case 'all':
+            getAllUsers();
+            break;
+        case 'get':
+            getUser();
+            break;
+    }
+    
 } 
 else if (isset($_POST["func"])) 
 {
     $func = $_POST["func"];
-}
 
-switch($func) 
-{
-    case 'add':
-        addUser();
-        break;
-    case 'all':
-        getAllUsers();
-        break;
-    case 'one':
-        getUser();
-        break;
-    case 'del':
-        deleteUser();
-        break;
+    switch($func) 
+    {
+        case 'add':
+            addUser();
+            break;
+        case 'del':
+            deleteUser();
+            break;
+    }
 }
 
 ?>
