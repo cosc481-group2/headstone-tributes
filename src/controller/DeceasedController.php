@@ -1,53 +1,68 @@
 <?php
 
-require_once '../service/UserService.php';
-require_once '../model/DeceasedUser.php';
-require_once '../model/Login.php';
+require_once '../service/DeceasedService.php';
+require_once '../model/Deceased.php';
 
-use SERVICE\UserService;
-use MODEL\User;
-use MODEL\Login;
+use SERVICE\DeceasedService;
+use MODEL\Deceased;
 
+function isValidDate(?string $date) {
+    if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $date)) {
+        return true;
+    }
+    return false;
+}
 
-function getAllUsers()
+function getAllDeceased()
 {
-    $service = new userService();
-    $users = $service->getUsers();
-    echo json_encode($users, JSON_PRETTY_PRINT);
+    $service = new DeceasedService();
+    $deceaseds = $service->getDeceaseds();
+    echo json_encode($deceaseds , JSON_PRETTY_PRINT);
     return;
 }
 
-function getUser()
+function getDeceased()
 {
-    $service = new userService();
-    $user = $service->getUser($_GET["user_id"]);
-    echo json_encode($user, JSON_PRETTY_PRINT);
+    $service = new deceasedService();
+    $deceased = $service->getDeceased($_GET["dec_id"]);
+    echo json_encode($deceased, JSON_PRETTY_PRINT);
     return;
 }
 
-function addUser()
+function addDeceased()
 {
-    $login = new Login();
-    $login->setUserId($_POST["user_id"]);
-    $login->setPassword($_POST["pw"]);
-    $login->setComments('');
+    $deceased = new Deceased();
+    $deceased->setDecId($_POST["dec_id"]);
+    $deceased->setUserId($_POST["user_id"]);
+    $deceased->setCemId($_POST["cem_id"]);
+    $deceased->setLastname($_POST["d_last_name"]);
+    $deceased->setFirstname($_POST["d_first_name"]);
+    $deceased->setMidInit($_POST["d_mi"]);
+    
+    if (isValidDate($_POST["dt_born"]))
+        $deceased->setDtBorn($_POST["dt_born"]);
+    else
+        $deceased->setDtBorn(null);
 
-    $user = new User();
-    $user->setUserId($_POST["user_id"]);
-    $user->setUsername($_POST["user_name"]);
-    $user->setFirstname($_POST["first_name"]);
-    $user->setLastname($_POST["last_name"]);
-    $user->setEmail($_POST["email"]);
 
-    $service = new userService();
-    $service->addUser($user, $login);
+    if (isValidDate($_POST["dt_passed"]))
+        $deceased->setDtPassed($_POST["dt_passed"]);
+    else
+        $deceased->setDtPassed(null);
+
+
+    $deceased->setObit($_POST["obit"]);
+    $deceased->setComments($_POST["comments"]);
+
+    $service = new DeceasedService();
+    $service->addDeceased($deceased);
     return;
 }
 
-function deleteUser()
+function deleteDeceased()
 {
-    $service = new userService();
-    $service->deleteUser($_POST["user_id"]);
+    $service = new DeceasedService();
+    $service->deleteDeceased($_POST["dec_id"]);
     return;
 }
 
@@ -59,10 +74,10 @@ if(isset($_GET["func"]))
     switch($func) 
     {
         case 'all':
-            getAllUsers();
+            getAllDeceased();
             break;
         case 'get':
-            getUser();
+            getDeceased();
             break;
     }
     
@@ -74,12 +89,71 @@ else if (isset($_POST["func"]))
     switch($func) 
     {
         case 'add':
-            addUser();
+            addDeceased();
             break;
         case 'del':
-            deleteUser();
+            deleteDeceased();
             break;
     }
 }
 
 ?>
+
+
+
+<!-- ========================================================================================== -->
+
+
+
+</head>
+<body>
+<div class="container">
+<h1>Deceased tester</h1>
+
+<!-- POST -->
+<form method="post">
+
+
+<p>dec_id:
+  <input type="text" name="dec_id" size="30" value="1"/>
+</p>
+<p>user_id:
+  <input type="text" name="user_id" size="30" value="1"/>
+</p>
+<p>cem_id:
+  <input type="text" name="cem_id" size="30" value="1"/>
+</p>
+<p>d_last_name:
+  <input type="text" name="d_last_name" size="30" value="Bodnar"/>
+</p>
+<p>d_first_name:
+  <input type="text" name="d_first_name" size="30" value="Andy"/>
+</p>
+<p>d_mi:
+  <input type="text" name="d_mi" size="30" value="L"/>
+</p>
+<p>dt_born:
+  <input type="text" name="dt_born" size="30" value="1982-06-22"/>
+</p>
+<p>dt_passed:
+  <input type="text" name="dt_passed" size="30" value="2012-07-24"/>
+</p>
+<p>obit:
+  <input type="text" name="obit" size="30" value="obit text..."/>
+</p>
+<p>comments:
+  <input type="text" name="comments" size="30" value="comments..."/>
+</p>
+<p>func:
+  <input type="text" name="func" size="30" value="add"/>
+</p>
+
+  <input type="submit" value="Test" name="test">
+
+</p>
+</form>
+</div>
+</body>
+</html>
+
+

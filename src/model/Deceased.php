@@ -12,13 +12,13 @@ class Deceased implements JsonSerializable
 {
     private int $dec_id;
     private int $user_id;
-    private int $cem_id;
+    private ?int $cem_id;
     private string $d_last_name;
     private string $d_first_name;
     private string $d_mi;
-    private DateTime $dt_born;
-    private DateTime $dt_passed;
-    private  string $obit;
+    private ?string $dt_born;
+    private ?string $dt_passed;
+    private string $obit;
     private string $comments;
 
 
@@ -82,21 +82,21 @@ class Deceased implements JsonSerializable
         $this->d_mi = $midInit;
     }
 
-    public function getDtBorn() : DateTime
+    public function getDtBorn() : ?string
     {
         return $this->dt_born;
     }
 
-    public function setDtBorn(DateTime $dtBorn)
+    public function setDtBorn(?string $dtBorn)
     {
         $this->dt_born = $dtBorn;
     }
 
-    public function getDtPassed() : DateTime
+    public function getDtPassed() : ?string
     {
         return $this->dt_passed;
     }
-    public function setDtPassed(DateTime $dtPassed)
+    public function setDtPassed(?string $dtPassed)
     {
         $this->dt_passed = $dtPassed;
     }
