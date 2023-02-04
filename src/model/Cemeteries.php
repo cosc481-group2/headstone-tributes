@@ -8,6 +8,8 @@ use JsonSerializable;
 
 class Cemeteries implements JsonSerializable {
 
+    private int cem_id;
+    private int con_id;
 
 }
 ?>
