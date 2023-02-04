@@ -10,7 +10,7 @@ use Core\DB;
 use MODEL\User;
 use PDO;
 
-class UserRepo 
+class CemRepo 
 {
     private string $table = "cemeteries";
     private PDO $pdo;
