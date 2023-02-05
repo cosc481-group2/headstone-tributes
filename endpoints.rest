@@ -1,0 +1,44 @@
+###########################################
+#
+# To Use, Download the RestClient Extension in VS Code
+#
+##########################
+
+@baseUrl = http://localhost:8080/src/controller 
+@contentType = application/x-www-form-urlencoded
+
+#####
+# User CRUDs
+#####
+
+###
+
+GET {{baseUrl}}/UserController?func=all
+
+###
+
+GET {{baseUrl}}/UserController?func=get&user_id=2
+
+###
+
+POST {{baseUrl}}/UserController
+Content-Type: application/x-www-form-urlencoded
+
+func=add
+&user_id=15
+&user_name=professorX
+&pw=xmen
+&first_name=Charles
+&last_name=Xavier
+&email=professorx@marvel.com
+
+###
+
+POST {{baseUrl}}/UserController
+Content-Type: application/x-www-form-urlencoded
+
+func=del
+&user_id=15
+
+###
+
