@@ -10,9 +10,10 @@ class Cemeteries implements JsonSerializable {
 
     private int $cem_id;
     private int $con_id;
+    private int $user_id;
     private string $cem_name;
     private string $cem_city;
-    private string $cem_comments;
+    private ?string $cem_comments;
 
     public function setCemId(int $cem_id) {
         $this->cem_id = $cem_id;
@@ -28,6 +29,14 @@ class Cemeteries implements JsonSerializable {
 
     public function getConId() : int {
         return $this->con_id;
+    }
+
+    public function setUserId(int $user_id) {
+        $this->user_id = $user_id;
+    }
+
+    public function getUserId() : int {
+        return $this->user_id;
     }
 
     public function setCemName(string $cem_name) {

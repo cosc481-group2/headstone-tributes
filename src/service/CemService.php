@@ -13,12 +13,10 @@ use MODEL\Cemeteries;
 class CemService
 {
     private $cemRepo;
-    //private $loginRepo;
 
     public function __construct()
     {
-        $this->CemRepo = new CemRepo();
-        //$this->loginRepo = new LoginRepo();
+        $this->cemRepo = new CemRepo();
     }
 
     public function getCemeteries()
@@ -31,16 +29,14 @@ class CemService
         return $this->cemRepo->getById($id);       
     }
 
-    public function addCemetery(Cemetery $cemetery)
+    public function addCemetery(Cemeteries $cemetery)
     {
-        //$this->loginRepo->add($login);
         $this->cemRepo->add($cemetery);
     }
 
     public function deleteCemetery(int $id)
     {
         $this->cemRepo->deleteById($id);
-        //$this->loginRepo->deleteById($id);
     }
 
     public function updateCemetery(Cemeteries $cemetery)

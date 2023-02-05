@@ -25,27 +25,25 @@ function getCemetery()
     return;
 }
 
-function addUser()
+function addCemetery()
 {
-    //$login = new Login();
-    //$login->setUserId($_POST["user_id"]);
-    //$login->setPassword($_POST["pw"]);
-    //$login->setComments('');
-
     $cemetery = new Cemeteries();
     $cemetery->setCemId($_POST["cem_id"]);
     $cemetery->setConId($_POST["con_id"]);
+    $cemetery->setUserId($_POST["user_id"]);
     $cemetery->setCemName($_POST["cem_name"]);
     $cemetery->setCemCity($_POST["cem_city"]);
     $cemetery->setCemComments($_POST["cem_comments"]);
 
-    $service = new userService();
-    $service->addCemetery($cemetery, $login);
+    $service = new CemService();
+    $service->addCemetery($cemetery);
     return;
 }
 
 function deleteCemetery()
 {
+    echo 'Hello world';
+    echo ($_POST["cem_id"]);
     $service = new cemService();
     $service->deleteCemetery($_POST["cem_id"]);
     return;

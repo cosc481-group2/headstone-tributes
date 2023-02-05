@@ -7,7 +7,7 @@ namespace REPOSITORY;
 require_once '../core/DB.php';
 
 use Core\DB;
-use MODEL\User;
+use MODEL\Cemeteries;
 use PDO;
 
 class CemRepo 
@@ -24,11 +24,12 @@ class CemRepo
     // Add cemetery to the database
     public function add(Cemeteries $cemetery)
     {
-        $query = "INSERT into {$this->table} VALUES (?,?,?,?,?)";
+        $query = "INSERT into {$this->table} VALUES (?,?,?,?,?,?)";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $cemetery->getCemId(),
             $cemetery->getConId(),
+            $cemetery->getUserId(),
             $cemetery->getCemName(),
             $cemetery->getCemCity(),
             $cemetery->getCemComments()
@@ -41,7 +42,7 @@ class CemRepo
         $query = "SELECT * FROM {$this->table}";
 
         $stmt = $this->pdo->query($query);
-        return $stmt->fetchAll(PDO::FETCH_CLASS, "Model\User");
+        return $stmt->fetchAll(PDO::FETCH_CLASS, "Model\Cemeteries");
     }
 
     // Get Cemetery object based on Primary Key
@@ -50,7 +51,7 @@ class CemRepo
         $query = "SELECT * FROM {$this->table} WHERE CEM_ID = ?";
         
         $stmt = $this->pdo->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\User');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Cemeteries');
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
@@ -76,7 +77,7 @@ class CemRepo
     // delete cemetery by id
     public function deleteById(int $id)
     {
-        $query = "DELETE from {$this->table} where USER_ID = ?";
+        $query = "DELETE from {$this->table} where CEM_ID = ?";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([$id]);
