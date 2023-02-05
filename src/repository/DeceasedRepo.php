@@ -87,7 +87,7 @@ class DeceasedRepo
 
     public function deleteById(int $id)
     {
-        $query = "DELETE from {$this->table} where USER_ID = ?";
+        $query = "DELETE from {$this->table} where DEC_ID = ?";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([$id]);

@@ -7,7 +7,7 @@ namespace MODEL;
 use JsonSerializable;
 
 
-class Deceased implements JsonSerializable 
+class Filter implements JsonSerializable 
 {
     private int $dec_id;
     private int $user_id;
@@ -19,7 +19,51 @@ class Deceased implements JsonSerializable
     private ?string $dt_passed;
     private string $obit;
     private string $comments;
+    private string $str2search;
+    private string $cem_name;
+    private string $cem_city;
+    private string $country;
+  private string $cem_comments;
 
+
+  public function getStrSearch() : string
+  {
+      return $this->str2search;
+  }
+
+  public function setStrSearch(string $str2search) 
+  {
+      $this->str2search = $str2search;
+  }
+    public function getCemComments() : string
+    {
+        return $this->cem_comments;
+    }
+
+    public function setCemComments(string $cem_comments) 
+    {
+        $this->cem_comments = $cem_comments;
+    }
+    public function getCemName() : string
+    {
+        return $this->cem_city;
+    }
+
+    public function setCemName(string $cem_name) 
+    {
+        $this->cem_name = $cem_name;
+    }
+    
+    
+    public function getCemCity() : string
+    {
+        return $this->cem_city;
+    }
+
+    public function setCemCity(string $cem_city) 
+    {
+        $this->cem_city = $cem_city;
+    }
 
 
     public function getDecId() : int
@@ -51,6 +95,15 @@ class Deceased implements JsonSerializable
         $this->user_id = $user_id;
     }
 
+    public function getStr2Search() : string
+    {
+        return $this->str_to_search;
+    }
+
+    public function setStr2Search(string $str_2_search)
+    {
+        $this->str_to_search = $str_2_search;
+    }
     public function getFirstname() : string
     {
         return $this->d_first_name;
@@ -120,6 +173,7 @@ class Deceased implements JsonSerializable
     {
         $this->comments = $comments;
     }
+
 
     public function jsonSerialize() : mixed
     {
