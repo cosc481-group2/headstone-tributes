@@ -29,6 +29,16 @@ class DeceasedRepo
         return $stmt->fetchAll(PDO::FETCH_CLASS, "Model\Deceased");
     }
 
+    public function getAllByUserId(int $user_id) : Array
+    {
+        $query = "SELECT * FROM {$this->table} WHERE USER_ID = ?";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Deceased');
+        $stmt->execute([$user_id]);
+        return $stmt->fetchAll();
+    }
+
     public function add(Deceased $deceased)
     {
         $query = "INSERT into {$this->table} VALUES (?,?,?,?,?,?,?,?,?,?)";

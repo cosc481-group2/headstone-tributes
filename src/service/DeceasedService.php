@@ -22,6 +22,11 @@ class DeceasedService
         return $this->deceasedRepo->getAll();
     }
 
+    public function getDeceasedsByUser(int $user_id)
+    {
+        return $this->deceasedRepo->getAllByUserId($user_id);
+    }
+
     public function getDeceased(int $id) 
     {
         return $this->deceasedRepo->getById($id);       

@@ -17,6 +17,15 @@ function getAllDeceased()
     return;
 }
 
+function getAllDeceasedByUserId()
+{
+    $service = new DeceasedService();
+    $deceaseds = $service->getDeceasedsByUser($_GET['user_id']);
+    echo json_encode($deceaseds , JSON_PRETTY_PRINT);
+    return;
+}
+
+
 function getDeceased()
 {
     $service = new deceasedService();
@@ -77,8 +86,13 @@ if(isset($_GET["func"]))
         case 'get':
             getDeceased();
             break;
+        case 'allByUser': 
+            getAllDeceasedByUserId();
+            break; 
     }
+// localhost:8080/src/controller/DeceasedController?func=allByUser&user_id=1
     
+
 } 
 else if (isset($_POST["func"])) 
 {

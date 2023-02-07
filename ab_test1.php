@@ -1,8 +1,5 @@
-<?php  
 
 
-
-?>
 
 <!-- ========================================================================================== -->
 
@@ -48,7 +45,7 @@
   <input type="text" name="comments" size="30" value="comments..."/>
 </p>
 <p>func:
-  <input type="text" name="comments" size="30" value="comments..."/>
+  <input type="text" name="func" size="30" value="add"/>
 </p>
 
   <input type="submit" value="Test" name="test">
