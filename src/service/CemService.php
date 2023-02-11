@@ -3,12 +3,9 @@
 namespace SERVICE;
 
 require_once '../repository/CemRepo.php';
-//require_once '../repository/LoginRepo.php';
 
 use REPOSITORY\CemRepo;
-//use REPOSITORY\LoginRepo;
 use MODEL\Cemeteries;
-//use MODEL\Login;
 
 class CemService
 {

@@ -2,11 +2,9 @@
 
 require_once '../service/CemService.php';
 require_once '../model/Cemeteries.php';
-//require_once '../model/Login.php';
 
 use SERVICE\CemService;
 use MODEL\Cemeteries;
-//use MODEL\Login;
 
 
 function getAllCemeteries()
@@ -30,7 +28,6 @@ function addCemetery()
     $cemetery = new Cemeteries();
     $cemetery->setCemId($_POST["cem_id"]);
     $cemetery->setConId($_POST["con_id"]);
-    $cemetery->setUserId($_POST["user_id"]);
     $cemetery->setCemName($_POST["cem_name"]);
     $cemetery->setCemCity($_POST["cem_city"]);
     $cemetery->setCemComments($_POST["cem_comments"]);

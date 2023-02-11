@@ -24,12 +24,11 @@ class CemRepo
     // Add cemetery to the database
     public function add(Cemeteries $cemetery)
     {
-        $query = "INSERT into {$this->table} VALUES (?,?,?,?,?,?)";
+        $query = "INSERT into {$this->table} VALUES (?,?,?,?,?)";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $cemetery->getCemId(),
             $cemetery->getConId(),
-            $cemetery->getUserId(),
             $cemetery->getCemName(),
             $cemetery->getCemCity(),
             $cemetery->getCemComments()
