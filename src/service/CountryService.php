@@ -7,13 +7,13 @@ require_once '../repository/CountryRepo.php';
 use REPOSITORY\CountryRepo;
 use MODEL\Country;
 
-class UserService
+class CountryService
 {
     private $countryRepo;
 
     public function __construct()
     {
-        $this->userRepo = new CountryRepo();
+        $this->countryRepo = new CountryRepo();
     }
 
     public function getCountry(int $id) 
