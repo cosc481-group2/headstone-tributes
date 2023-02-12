@@ -26,5 +26,10 @@ class Country implements JsonSerializable {
     public function getCountry () : string {
         return $this->country;
     }
+
+    public function jsonSerialize() : mixed
+    {
+        return get_object_vars($this);
+    }
 }
 ?>
