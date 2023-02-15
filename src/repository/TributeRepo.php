@@ -32,25 +32,34 @@ class TributeRepo
     public function getAllByUser($user_id) : Array
     {
         $query = "SELECT * FROM {$this->table} WHERE USER_ID = ?";
-
         $stmt = $this->pdo->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Tributes');
         $stmt->execute([$user_id]);
         return $stmt->fetchAll();
-
     }
+
+    public function getAllByDeceased($dec_id) : Array
+    {
+        $query = "SELECT * FROM {$this->table} WHERE DEC_ID = ?";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Tributes');
+        $stmt->execute([$dec_id]);
+        return $stmt->fetchAll();
+    }
+
+
 
 
 
     public function add(Tributes $tributes)
     {
-        $query = "INSERT into {$this->table} (dec_id, user_id, tribute, id) VALUES (?,?,?,?)";
+        $query = "INSERT into {$this->table} (dec_id, user_id, tribute) VALUES (?,?,?)";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $tributes->getDecId(),
             $tributes->getUserId(),
-            $tributes->getTribute(),
-            $tributes->getId()
+            $tributes->getTribute()
+            // $tributes->getId()
         ]);
     }
 
