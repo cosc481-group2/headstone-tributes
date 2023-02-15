@@ -44,13 +44,12 @@ class TributeRepo
 
     public function add(Tributes $tributes)
     {
-        $query = "INSERT into {$this->table} VALUES (?,?,?,?,?)";
+        $query = "INSERT into {$this->table} (dec_id, user_id, tribute, id) VALUES (?,?,?,?)";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $tributes->getDecId(),
             $tributes->getUserId(),
             $tributes->getTribute(),
-            $tributes->getDtPosted(),
             $tributes->getId()
         ]);
     }
@@ -65,21 +64,16 @@ class TributeRepo
         return $stmt->fetch();
     }
 
-    public function updateById(Tributes $tribute)
+    public function updateById(int $id, string $tribute) // updates existing tribute
     {
         $query = "UPDATE {$this->table} SET "
-          . "dec_id = ?, "
-          . "user_id = ?, "
           . "tribute = ?, "
-          . "dt_post = ?, "
-          . "id = ? ";
+          . "dt_post = ? "
+          . "WHERE id = " . $id;
 
         $stmt = $this->pdo->prepare($query)->execute([
-          $tribute->getDecId(),
-          $tribute->getUserId(),
-          $tribute->getTribute(),
-          $tribute->getDtPosted(),
-          $tribute->getId()
+          htmlentities($tribute),
+          date("Y-m-d") // defaults to current date
       ]);
     }
 

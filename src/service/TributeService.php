@@ -42,9 +42,9 @@ class TributeService
         $this->tributeRepo->deleteById($id);
     }
 
-    public function updateTribute(Tributes $tributes)
+    public function updateTribute(int $id, string $tribute)
     {
-        $this->tributeRepo->updateById($tributes);
+        $this->tributeRepo->updateById($id, $tribute);
     }
 }
 

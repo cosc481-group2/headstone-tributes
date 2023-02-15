@@ -42,3 +42,13 @@ func=del
 
 ###
 
+
+POST {{baseUrl}}/TributeController
+Content-Type: application/x-www-form-urlencoded
+
+func=add
+&dec_id=3
+&user_id=3
+&tribute='test tribute'
+
+###

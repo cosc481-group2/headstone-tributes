@@ -47,6 +47,7 @@ function addTribute()
 
   $service = new TributeService();
   $service->addTribute($tribute);
+  echo json_encode($tribute , JSON_PRETTY_PRINT);
   return;
 }
 
@@ -56,6 +57,17 @@ function deleteTribute()
     $service->deleteTribute($_POST["id"]);
     return;
 }
+
+function updateTribute()
+{
+    $service = new TributeService();
+    $service->updateTribute($_POST['id'], $_POST['tribute']);
+    $tribute = $service->getTribute($_POST["id"]);
+    echo json_encode($tribute , JSON_PRETTY_PRINT);
+    return;
+}
+
+
 
 # Check is FUNC param is set for either GET or POST and excute the value
 if(isset($_GET["func"]))
@@ -87,6 +99,9 @@ else if (isset($_POST["func"]))
             break;
         case 'del':
             deleteTribute();
+            break;
+        case 'update':
+            updateTribute();
             break;
     }
 }
