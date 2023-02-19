@@ -23,6 +23,14 @@ function getAllTributesByUser()
     echo json_encode($tributes , JSON_PRETTY_PRINT);
     return;
 }
+function getAllTributesByDeceased()
+{
+    $service = new TributeService();
+    $tributes = $service->getTributesByDeceased($_POST['dec_id']);
+    echo json_encode($tributes , JSON_PRETTY_PRINT);
+    return;
+}
+
 
 function getTribute()
 {
@@ -38,15 +46,16 @@ function addTribute()
   $tribute->setDecId($_POST["dec_id"]);
   $tribute->setUserId($_POST["user_id"]);
   $tribute->setTribute($_POST["tribute"]);
-  $tribute->setId($_POST["id"]);
+//   $tribute->setId($_POST["id"]);   let db assign an ID
     
-  if (isValidDate($_POST["dt_post"]))
-      $tribute->setDtPosted($_POST["dt_post"]);
-  else
-      $tribute->setDtPosted(null);
+//   if (isValidDate($_POST["dt_post"]))
+//       $tribute->setDtPosted($_POST["dt_post"]);
+//   else
+//       $tribute->setDtPosted(null);
 
   $service = new TributeService();
   $service->addTribute($tribute);
+  echo json_encode($tribute , JSON_PRETTY_PRINT);
   return;
 }
 
@@ -56,6 +65,17 @@ function deleteTribute()
     $service->deleteTribute($_POST["id"]);
     return;
 }
+
+function updateTribute()
+{
+    $service = new TributeService();
+    $service->updateTribute($_POST['id'], $_POST['tribute']);
+    $tribute = $service->getTribute($_POST["id"]);
+    echo json_encode($tribute , JSON_PRETTY_PRINT);
+    return;
+}
+
+
 
 # Check is FUNC param is set for either GET or POST and excute the value
 if(isset($_GET["func"]))
@@ -87,6 +107,12 @@ else if (isset($_POST["func"]))
             break;
         case 'del':
             deleteTribute();
+            break;
+        case 'update':
+            updateTribute();
+            break;
+        case 'getByDec':
+            getAllTributesByDeceased();
             break;
     }
 }

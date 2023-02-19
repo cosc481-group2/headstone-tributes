@@ -32,26 +32,34 @@ class TributeRepo
     public function getAllByUser($user_id) : Array
     {
         $query = "SELECT * FROM {$this->table} WHERE USER_ID = ?";
-
         $stmt = $this->pdo->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Tributes');
         $stmt->execute([$user_id]);
         return $stmt->fetchAll();
-
     }
+
+    public function getAllByDeceased($dec_id) : Array
+    {
+        $query = "SELECT * FROM {$this->table} WHERE DEC_ID = ?";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Tributes');
+        $stmt->execute([$dec_id]);
+        return $stmt->fetchAll();
+    }
+
+
 
 
 
     public function add(Tributes $tributes)
     {
-        $query = "INSERT into {$this->table} VALUES (?,?,?,?,?)";
+        $query = "INSERT into {$this->table} (dec_id, user_id, tribute) VALUES (?,?,?)";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $tributes->getDecId(),
             $tributes->getUserId(),
-            $tributes->getTribute(),
-            $tributes->getDtPosted(),
-            $tributes->getId()
+            $tributes->getTribute()
+            // $tributes->getId()
         ]);
     }
 
@@ -65,21 +73,16 @@ class TributeRepo
         return $stmt->fetch();
     }
 
-    public function updateById(Tributes $tribute)
+    public function updateById(int $id, string $tribute) // updates existing tribute
     {
         $query = "UPDATE {$this->table} SET "
-          . "dec_id = ?, "
-          . "user_id = ?, "
           . "tribute = ?, "
-          . "dt_post = ?, "
-          . "id = ? ";
+          . "dt_post = ? "
+          . "WHERE id = " . $id;
 
         $stmt = $this->pdo->prepare($query)->execute([
-          $tribute->getDecId(),
-          $tribute->getUserId(),
-          $tribute->getTribute(),
-          $tribute->getDtPosted(),
-          $tribute->getId()
+          htmlentities($tribute),
+          date("Y-m-d") // defaults to current date
       ]);
     }
 
