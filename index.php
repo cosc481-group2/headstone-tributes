@@ -26,13 +26,26 @@
                 </div>
             </nav>
         </div>
+        <div class="row"> 
+        <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-success ">log in</button>
+  <button type="button" class="btn btn-success">sign up</button>
+  <button type="button" class="btn btn-success">add a new deceased</button>
+  <button type="button" class="btn btn-success">profile</button>
+</div>
+           
+        </div>
         <div class="row p-0">
             <img src="/public/img/pexels-koolshooters-6495720.jpg" alt="" class="img-fluid p-0 vh-100">
+            <label for="exampleInputEmail1" class="form-label">search for a deceased</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="row"> 
-            <div class="p-3 col bg-secondary bg-gradient h-50"> column </div>
-            <div class="p-3 col bg-primary bg-gradient"> column </div>
-            <div class="p-3 col bg-success bg-gradient"> column </div> 
+        <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary">contact info</button>
+  <button type="button" class="btn btn-secondary">will advice</button>
+  <button type="button" class="btn btn-secondary">burial info</button>
+</div>
         </div>
         <div class="row">
             <div class="col-4 m-2">
