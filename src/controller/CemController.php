@@ -39,8 +39,6 @@ function addCemetery()
 
 function deleteCemetery()
 {
-    echo 'Hello world';
-    echo ($_POST["cem_id"]);
     $service = new cemService();
     $service->deleteCemetery($_POST["cem_id"]);
     return;

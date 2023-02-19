@@ -27,6 +27,12 @@ class TributeService
         return $this->tributeRepo->getAllByUser($user_id);
     }
 
+    public function getTributesByDeceased(int $dec_id)
+    {
+        return $this->tributeRepo->getAllByDeceased($dec_id);
+    }
+
+
     public function getTribute(int $id) 
     {
         return $this->tributeRepo->getById($id);       
@@ -42,9 +48,9 @@ class TributeService
         $this->tributeRepo->deleteById($id);
     }
 
-    public function updateTribute(Tributes $tributes)
+    public function updateTribute(int $id, string $tribute)
     {
-        $this->tributeRepo->updateById($tributes);
+        $this->tributeRepo->updateById($id, $tribute);
     }
 }
 
