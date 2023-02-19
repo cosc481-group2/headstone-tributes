@@ -9,26 +9,26 @@ use MODEL\Country;
 
 function getCountry()
 {
-    $service = new countryService();
+    $service = new CountryService();
     $country = $service->getCountry($_GET["con_id"]);
     echo json_encode($country, JSON_PRETTY_PRINT);
     return;
 }
 
-function addUser()
+function addCountry()
 {
     $country = new Country();
     $country->setConId($_POST["con_id"]);
     $country->setCountry($_POST["country"]);
 
-    $service = new userService();
+    $service = new CountryService();
     $service->addCountry($country);
     return;
 }
 
-function deleteUser()
+function deleteCountry()
 {
-    $service = new userService();
+    $service = new CountryService();
     $service->deleteCountry($_POST["con_id"]);
     return;
 }
