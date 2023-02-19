@@ -123,5 +123,25 @@ func=del
 # Countries
 ####################
 
+GET {{baseUrl}}/CountryController?func=get&con_id=1
 
 ###
+
+GET {{baseUrl}}/CountryController?func=all
+
+###
+
+POST {{baseUrl}}/CountryController
+Content-Type: application/x-www-form-urlencoded
+
+func=add
+&con_id=196
+&country=Will Island
+
+###
+
+POST {{baseUrl}}/CountryController
+Content-Type: application/x-www-form-urlencoded
+
+func=del
+&con_id=196
