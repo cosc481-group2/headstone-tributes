@@ -16,6 +16,11 @@ class CountryService
         $this->countryRepo = new CountryRepo();
     }
 
+    public function getCountries()
+    {
+        return $this->countryRepo->getAll();
+    }
+
     public function getCountry(int $id) 
     {
         return $this->countryRepo->getById($id);       

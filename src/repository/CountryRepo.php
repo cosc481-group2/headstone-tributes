@@ -12,7 +12,7 @@ use PDO;
 
 class CountryRepo
 {
-    private string $table = "country";
+    private string $table = "countries";
     private PDO $pdo;
 
     public function __construct()
@@ -29,6 +29,14 @@ class CountryRepo
             $country->getConID(),
             $country->getCountry()
         ]);
+    }
+
+    public function getAll() : Array
+    {
+        $query = "SELECT * FROM {$this->table}";
+
+        $stmt = $this->pdo->query($query);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, "Model\Country");
     }
 
     public function getById(int $id)
