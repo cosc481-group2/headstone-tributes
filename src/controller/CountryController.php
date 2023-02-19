@@ -6,6 +6,13 @@ require_once '../model/Country.php';
 use SERVICE\CountryService;
 use MODEL\Country;
 
+function getAllCountries()
+{
+    $service = new CountryService();
+    $country = $service->getCountries();
+    echo json_encode($country, JSON_PRETTY_PRINT);
+    return;
+}
 
 function getCountry()
 {
