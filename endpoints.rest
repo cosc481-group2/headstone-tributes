@@ -42,13 +42,86 @@ func=del
 
 ###
 
+#################################
+# Filter
+##############################
+
+POST {{baseUrl}}/FilterController
+Content-Type: application/x-www-form-urlencoded
+
+func=filt
+&filt_str=2009
+
+######################################
+# Tribute
+###############################
+
+
+GET {{baseUrl}}/TributeController?func=all
+
+###
+
+GET {{baseUrl}}/TributeController?func=get&id=15
+
+###
+
+GET {{baseUrl}}/TributeController?func=allByUser&user_id=1
+
+###
 
 POST {{baseUrl}}/TributeController
 Content-Type: application/x-www-form-urlencoded
 
 func=add
-&dec_id=3
-&user_id=3
-&tribute='test tribute'
+&user_id=5
+&dec_id=1
+&tribute="Hey was a good man/woman"
+&id=15
+&dt_post=2022-10-23
+
+###
+
+POST {{baseUrl}}/TributeController
+Content-Type: application/x-www-form-urlencoded
+
+func=del
+&id=15
+
+###########################
+# Cemeteries 
+#################
+
+GET {{baseUrl}}/CemController?func=all
+
+###
+
+GET {{baseUrl}}/CemController?func=get&cem_id=3
+
+###
+
+POST {{baseUrl}}/CemController
+Content-Type: application/x-www-form-urlencoded
+
+func=add
+&cem_id=6
+&con_id=2
+&cem_name=O. H. Pye III Funeral Home
+&cem_city= Detroit
+&cem_comments=
+
+###
+
+POST {{baseUrl}}/CemController
+Content-Type: application/x-www-form-urlencoded
+
+func=del
+&cem_id=6
+
+###
+
+###########################
+# Countries
+####################
+
 
 ###
