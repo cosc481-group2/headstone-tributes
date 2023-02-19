@@ -47,6 +47,9 @@ if(isset($_GET["func"]))
 
     switch($func) 
     {
+        case 'all':
+            getAllCountries();
+            break;
         case 'get':
             getCountry();
             break;
