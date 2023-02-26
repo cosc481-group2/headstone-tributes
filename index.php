@@ -13,7 +13,7 @@
         <div class="row">
             <nav class="navbar navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <span class="navbar-brand mb-0 h1">HeadStone-Tributes THE NEW NEW SITE</span>
+                    <span class="navbar-brand mb-0 h1">Welcome to headstones.com</span>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2">
                             <li class="nav-item">
@@ -28,46 +28,38 @@
         </div>
         <div class="row"> 
         <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-success ">log in</button>
-  <button type="button" class="btn btn-success">sign up</button>
-  <button type="button" class="btn btn-success">add a new deceased</button>
-  <button type="button" class="btn btn-success">profile</button>
+  <a href ="login.php" role="button" class="btn btn-success ">log in</a>
+  <a href ="signup.php" role="button" class="btn btn-success">sign up</a>
+  <a href ="create_new.php" role="button" class="btn btn-success">add a new deceased</a>
+  <a href ="profile.php" role="button" class="btn btn-success">profile</a>
 </div>
-           
+<div class="row p-0">
+          
+            
         </div>
-        <div class="row p-0">
+        </div>
+        <div class="row p-0 position-relative" >
             <img src="/public/img/pexels-koolshooters-6495720.jpg" alt="" class="img-fluid p-0 vh-100">
-            <label for="exampleInputEmail1" class="form-label">search for a deceased</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div class="position-absolute top-25">
+          <label for="searchForDeceased" class="form-label">search for a deceased</label>
+            <input type="text" class="form-control" id="searchForDeceased" aria-describedby="emailHelp">
+          </div>
+
+           
         </div>
         <div class="row"> 
         <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-secondary">contact info</button>
-  <button type="button" class="btn btn-secondary">will advice</button>
-  <button type="button" class="btn btn-secondary">burial info</button>
+        <a href ="contact.php" role="button" class="btn btn-success ">contact info</a>
+  <a href ="burial_info.php" role="button" class="btn btn-success">burial info</a>
+  <a href ="will_advice.php" role="button" class="btn btn-success">will advice</a>
 </div>
         </div>
         <div class="row">
             <div class="col-4 m-2">
                 <div class="card">
-                    <div class="card-header">Login Form</div>
+                    
                     <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
