@@ -58,7 +58,7 @@
                 <div>
                     <input type="button" value="Submit" id="submit" class="btn btn-primary" onclick="validateUser()"/>
                     &nbsp&nbsp&nbsp
-                    <input type="button" value="Sign up" id="home" class="btn btn-primary" onclick="" />
+                    <input type="button" value="Register" id="home" class="btn btn-primary" onclick="toRegistation()" />
                 </div>
 
 

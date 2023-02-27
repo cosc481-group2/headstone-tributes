@@ -32,10 +32,18 @@ class LoginRepo
         ]);
     }
 
+    public function getByIdPw(int $id, string $pw)
+    {
+        $query = "SELECT user_id FROM {$this->table} WHERE USER_ID = ? AND PW = ?";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Login');
+        $stmt->execute([$id, $pw]);
+        return $stmt->fetch();
+    }
+
     public function getById(int $id)
     {
         $query = "SELECT * FROM {$this->table} WHERE USER_ID = ?";
-        
         $stmt = $this->pdo->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Login');
         $stmt->execute([$id]);

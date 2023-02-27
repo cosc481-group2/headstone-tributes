@@ -55,6 +55,16 @@ class UserRepo
         return $stmt->fetch();
     }
 
+    public function getIdByUN(string $username)  // used in pw verification
+    {
+        $query = "SELECT * FROM {$this->table} WHERE USER_name = ?";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([$username]);
+        return $stmt->fetch();
+    }
+
+
+
     public function updateById(User $user)
     {
         $query = "UPDATE {$this->table} SET "

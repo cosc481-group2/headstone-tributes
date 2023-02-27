@@ -23,10 +23,10 @@ function getAllTributesByUser()
     echo json_encode($tributes , JSON_PRETTY_PRINT);
     return;
 }
-function getAllTributesByDeceased()
+function getAllTributesByDeceased() // updated 2/27/23
 {
     $service = new TributeService();
-    $tributes = $service->getTributesByDeceased($_POST['dec_id']);
+    $tributes = $service->getTributesByDeceased($_GET['dec_id']);
     echo json_encode($tributes , JSON_PRETTY_PRINT);
     return;
 }
@@ -93,6 +93,9 @@ if(isset($_GET["func"]))
         case 'allByUser';
             getAllTributesByUser();
             break;
+        case 'getByDec':
+            getAllTributesByDeceased();
+            break;
     }
     
 } 
@@ -111,9 +114,7 @@ else if (isset($_POST["func"]))
         case 'update':
             updateTribute();
             break;
-        case 'getByDec':
-            getAllTributesByDeceased();
-            break;
+       
     }
 }
 

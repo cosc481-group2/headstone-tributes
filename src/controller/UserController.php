@@ -9,6 +9,14 @@ use MODEL\User;
 use MODEL\Login;
 
 
+function getLogByIdPw() 
+{
+    $service = new userService();
+    $user = $service->getLoginByIdPw($_GET["user_id"], $_GET['pw']);
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+
 function getAllUsers()
 {
     $service = new userService();
@@ -16,6 +24,16 @@ function getAllUsers()
     echo json_encode($users, JSON_PRETTY_PRINT);
     return;
 }
+
+
+function getUserByUserName()
+{
+    $service = new userService();
+    $user = $service->getIDbyUN($_GET["user_name"]);
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+
 
 function getUser()
 {
@@ -63,6 +81,12 @@ if(isset($_GET["func"]))
             break;
         case 'get':
             getUser();
+            break;
+        case 'getByUN':
+            getUserByUserName();
+            break;
+        case 'getLogByIdPw':
+            getLogByIdPw();
             break;
     }
     
