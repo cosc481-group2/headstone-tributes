@@ -32,6 +32,15 @@ class LoginRepo
         ]);
     }
 
+    public function getByIdPw_2(string $user_name, string $pw)
+    {
+        $query = "SELECT login.user_id, first_name FROM login, users WHERE USER_NAME = ? AND PW = ? AND login.user_id = users.user_id;";
+        $stmt = $this->pdo->prepare($query);
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Login');
+        $stmt->execute([$user_name, $pw]);
+        return $stmt->fetch();
+    }
+
     public function getByIdPw(int $id, string $pw)
     {
         $query = "SELECT user_id FROM {$this->table} WHERE USER_ID = ? AND PW = ?";

@@ -8,7 +8,13 @@ use SERVICE\UserService;
 use MODEL\User;
 use MODEL\Login;
 
-
+function getLogByIdPw_2() 
+{
+    $service = new userService();
+    $user = $service->getLoginByIdPw_2($_GET["user_name"], $_GET['pw']);
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
 function getLogByIdPw() 
 {
     $service = new userService();
@@ -87,6 +93,9 @@ if(isset($_GET["func"]))
             break;
         case 'getLogByIdPw':
             getLogByIdPw();
+            break;
+        case 'getLog2':
+            getLogByIdPw_2();
             break;
     }
     

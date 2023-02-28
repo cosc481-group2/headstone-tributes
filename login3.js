@@ -4,12 +4,11 @@ src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQu
 function validateUser() {
 
   $("#err").html(""); // clears error
+  $("#success_msg").html("");
 
   sessionStorage.setItem("is_login_ok", false);
   var un = $("#user_name").val(); // use var for global scope
   var pw = $("#password").val();
-  var user_data;
-  var user_id;
 
 
   if (un == "") { // check user name - blank
@@ -23,57 +22,35 @@ function validateUser() {
   }
 
 
-  // check user name - in DB?
-  $("#err").html("Passed initial checks");
-
-  let gf = "/src/controller/UserController.php?func=getByUN&user_name=" + un;
+  // check user name / PW in DB?
+  let gf = "/src/controller/UserController.php?func=getLog2&user_name=" + un + "&pw=" + pw;
 
   $.get(gf, function (data) {
-    user_data = JSON.parse(data);
-    user_id = user_data.user_id;
-    console.log('running .get UN........');
-    console.log(user_data);
+    data = JSON.parse(data);
+    console.log('running .get 2........');
+    console.log(data);
   
-    if (user_data == false) {
-      console.log('no username match');
-      $("#err").html("Username not found");
+    if (data == false) {
+      let e = 'No username / password match'
+      console.log(e);
+      $("#err").html(e);
     }
-    else {
+    else { // SUCCESS
 
+      // Finally.....
+      $("#err").html(""); // clears error
+      $("#success_msg").html("Success.... Credentials verified");
+      sessionStorage.setItem("first_name", data.first_name);
+      sessionStorage.setItem("is_login_ok", true);
+      sessionStorage.setItem("user_id", data.user_id);
+      localStorage.setItem("user_name", un); // permanent storage, potentially pre-populate user name later
+      setTimeout(toIndex, 2000); // nice fade out back to index
 
-
-      // Verify password....................................................
-      let user_id = sessionStorage.getItem("user_id");
-      gf = "/src/controller/UserController.php?func=getLogByIdPw&user_id=" + user_id + "&pw=" + pw;
-
-      $.get(gf, function (data) {
-        data = JSON.parse(data);
-        console.log('running .get PW........');
-        console.log(data);
-        if (data == false) {
-          $("#err").html("Incorrect password");
-        }
-        else {
-
-          
-          // Finally.....
-          $("#err").html(""); // clears error
-          $("#success_msg").html("Success.... Credentials verified");
-          sessionStorage.setItem("first_name", user_data.first_name);
-          sessionStorage.setItem("is_login_ok", true);
-          sessionStorage.setItem("user_id", user_id);
-          localStorage.setItem("user_name", un); // permanent storage, potentially pre-populate user name later
-          setTimeout(toIndex, 2000); // nice fade out back to index
-
-        }
-      }); // end pw check
-
-    } // end UN else
+    } // end else, success
 
  }); // end username check
 
 } // end validate
-
 
 
 

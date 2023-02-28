@@ -30,6 +30,11 @@ class UserService
         return $this->loginRepo->getByIdPw($user_id, $pw);
     }
 
+    public function getLoginByIdPw_2(string $user_name, string $pw) { // added by AB on 2/28/23
+        return $this->loginRepo->getByIdPw_2($user_name, $pw);
+    }
+
+
 
     public function getUsers()
     {
