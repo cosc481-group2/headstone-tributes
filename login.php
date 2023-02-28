@@ -52,7 +52,11 @@
                     <!-- this is a test error -->
 
                 </label>
+                <label id="success_msg" style="color:green">
+                    <!-- <br> -->
+                    <!-- this is a test error -->
 
+                </label>
 
 
                 <div>
