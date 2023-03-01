@@ -29,7 +29,7 @@ function validateUser() {
     data = JSON.parse(data);
     console.log('running .get 2........');
     console.log(data);
-  
+
     if (data == false) {
       let e = 'No username / password match'
       console.log(e);
@@ -48,10 +48,40 @@ function validateUser() {
 
     } // end else, success
 
- }); // end username check
+  }); // end username check
 
 } // end validate
 
+function onLoadLogin() {
+  let un = $("#user_name").val(); // use var for global scope
+  let checked = localStorage.getItem("rememberMe");
+
+  let LastUsert = localStorage.getItem("user_name");
+  if (checked != "true") {
+    return
+  }
+  else {
+    if (LastUsert) {
+      $("#user_name").val(LastUsert);
+      document.getElementById("remember").checked = true;
+      console.log('Defaulted to last known user');
+    }
+  }
+}
+
+
+function rememberCheckBox() {
+  let LastUsert = localStorage.getItem("user_name");
+  let checked = document.getElementById("remember").checked;
+  if (checked) {
+    $("#user_name").val(LastUsert);
+    localStorage.setItem("rememberMe", true);
+  }
+  else {
+    $("#user_name").val("");
+    localStorage.setItem("rememberMe", false);
+  }
+}
 
 
 
