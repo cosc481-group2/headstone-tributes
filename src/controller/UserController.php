@@ -8,6 +8,15 @@ use SERVICE\UserService;
 use MODEL\User;
 use MODEL\Login;
 
+
+function getNextId() 
+{
+    $service = new userService();
+    $user = $service->getNextId();
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+
 function getLogByIdPw_2() 
 {
     $service = new userService();
@@ -96,6 +105,9 @@ if(isset($_GET["func"]))
             break;
         case 'getLog2':
             getLogByIdPw_2();
+            break;
+        case 'nextId':
+            getNextId();
             break;
     }
     

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="newUser.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -8,54 +10,90 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Document</title>
-</head>
+    <script>
 
-<style>
-    h1 {
-        text-align: center;
-    }
-</style>
+        $(document).ready(function () {
+            onLoadNewUser();
+        });
+    </script>
+
+    <style>
+        .success {
+            text-align: center;
+            color: green;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .err {
+            color: red;
+        }
+    </style>
 
 <body>
 
-    <a href="index.php" role="button" class="btn btn-primary">Home</a>
-    <h1> New User Sign Up</h1>
-    <div class="card w-50 mx-auto my-5">
+    <h1 class="center">New User Sign Up</h1>
+    <div class="card w-50 mx-auto my-4">
 
         <div class="card-body">
-            <form action="">
-                <div class="mt-3">
-                    <label for="first_name" class="form-label">first name</label>
-                    <input type="text" id="first_name" class="form-control">
-                </div>
-                <div class="mt-3">
-                    <label for="last_name" class="form-label">last name</label>
-                    <input type="text" id="last_name" class="form-control">
-                    <div class="mt-3">
-                        <label for="email" class="form-label">email</label>
-                        <input type="text" id="email" class="form-control">
-                        <div class="mt-3">
-                            <label for="username" class="form-label">user name</label>
-                            <input type="text" id="last_name" class="form-control">
-                            <div class="mt-3">
-                                <label for="password" class="form-label">password</label>
-                                <input type="password" id="password" class="form-control">
-                            </div>
+            <p>First Name: &nbsp
+                <label id="err_first_name" class="err">
+                </label>
+                <input type="text" id="first_name" class="form-control" />
 
+            </p>
 
+            <p>Last Name: &nbsp
+                <label id="err_last_name" class="err">
+                </label>
+                <input type="text" id="last_name" class="form-control" />
 
-                            <div class="mt-3">
-                                <a href="login.php" role="button" class="btn btn-primary">already have an account? log
-                                    in here</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            </p>
 
+            <p>User Name: &nbsp
+                <label id="err_user_name" class="err">
+                </label>
+                <input type="text" id="user_name" class="form-control" />
+
+            </p>
+
+            <p>E-mail: &nbsp
+                <label id="err_email" class="err">
+                </label>
+                <input type="text" id="email" class="form-control" />
+
+            </p>
+
+            <p>Password: &nbsp
+                <label id="err_password1" class="err">
+                </label>
+                <input type="password" id="password1" class="form-control" />
+
+            <p>Password (again):
+                <input type="password" id="password2" class="form-control" />
+            </p>
+
+            <div>
+                <input type="button" value="Submit" id="submit" class="btn btn-primary" onclick="validateNewUser()" />
+                &nbsp&nbsp&nbsp
+
+                <input type="button" value="Go to login" id="login" class="btn btn-primary" onclick="toLogin()" />
+                &nbsp&nbsp&nbsp
+
+                <input type="button" value="Home" id="login" class="btn btn-primary" onclick="toIndex()" />
+                &nbsp&nbsp&nbsp
+
+            </div>
         </div>
 
+
     </div>
+    <p id="success_msg" class="success">
+    </p>
+
+
 </body>
 
 </html>

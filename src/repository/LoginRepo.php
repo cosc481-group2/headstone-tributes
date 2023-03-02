@@ -32,6 +32,14 @@ class LoginRepo
         ]);
     }
 
+    
+    public function getNextId()
+    {
+        $query = "SELECT max(user_id) as max_current_id FROM login;";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
     public function getByIdPw_2(string $user_name, string $pw)
     {
         $query = "SELECT login.user_id, first_name FROM login, users WHERE USER_NAME = ? AND PW = ? AND login.user_id = users.user_id;";

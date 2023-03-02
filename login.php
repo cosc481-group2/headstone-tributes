@@ -19,23 +19,28 @@
             onLoadLogin();
         });
     </script>
+    <style>
+        .success {
+            text-align: center;
+            color: green;
+        }
 
+        .center {
+            text-align: center;
+        }
+
+        .err {
+            color: red;
+        }
+    </style>
 </head>
 
-<style>
-    h1 {
-        text-align: center;
-    }
-</style>
+
 
 <body>
-    <p>
-    </p>
-    &nbsp
-    <a href="index.php" role="button" class="btn btn-primary">Home</a>
-
+    <br>
     <h1>Login </h1>
-    <div class="card w-50 mx-auto my-5">
+    <div class="card w-50 mx-auto my-4">
         <div class="card-body">
             <form action="">
                 <div class="mt-3">
@@ -61,12 +66,14 @@
 
 
                 <div>
-                    <input type="button" value="Submit" id="submit" class="btn btn-primary" onclick="validateUser()" />
+                    <input type="button" value="Submit" class="btn btn-primary" onclick="validateUser()" />
                     &nbsp&nbsp&nbsp
-                    <input type="button" value="Register" id="home" class="btn btn-primary" onclick="toRegistation()" />
+                    <input type="button" value="Register" class="btn btn-primary" onclick="toRegistation()" />
                     &nbsp&nbsp&nbsp
                     <input type="checkbox" id="remember" onclick="rememberCheckBox()">
-                    <label for="remember"> Remember last user name </label>
+                    <label for="remember"> Remember Me </label>
+                    &nbsp&nbsp&nbsp&nbsp
+                    <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
                 </div>
 
 

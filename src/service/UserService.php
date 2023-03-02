@@ -21,7 +21,9 @@ class UserService
         $this->loginRepo = new LoginRepo();
     }
 
-
+    public function getNextId() {
+        return $this->loginRepo->getNextId();
+    }
     public function getIDbyUN(string $user_name) { // added by AB on 2/27/23
         return $this->userRepo->getIdByUN($user_name);
     }
