@@ -21,14 +21,16 @@
         <input type="text" id = "last_name" class="form-control">
         <div class="mt-3">
         <label for="date_born" class="form-label">date of birth</label>
-        <input type="text" id = "date_born" class="form-control">
+        <input type="date" id = "date_born" class="form-control">
         <div class="mt-3">
         <label for="date_died" class="form-label">date of death</label>
-        <input type="text" id = "date_died" class="form-control">
+        <input type="date" id = "date_died" class="form-control">
         <div class="mt-3">
         <label for="obituary" class="form-label">obituary</label>
         <input type="obituary" id = "text" class="form-control">
     </div>
+    <div class="mt-3 d-flex justify-content-between" >
+    <button class = "btn btn-success"> submit </button>
     </div>
     <div class="mt-3">
         
