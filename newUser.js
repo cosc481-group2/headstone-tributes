@@ -17,7 +17,7 @@ function validateNewUser() {
 
   validateFLEP(ob);
 
-  
+
   // User Name
 
   if (ob.uName == "") {
@@ -125,10 +125,43 @@ function updateTables(ob) {
 
 
 function onLoadNewUser() {
-  console.log('got here');
   validateNewUser();
 }
 
+
+
+function onLoadProfile() {
+  // load current
+  let id = sessionStorage.getItem("user_id")
+  if (id == null) {
+    alert('No user in sessionStorage... should NEVER get here!')
+  }
+
+  else {
+    let gf = "/src/controller/UserController.php?func=get&user_id=" + id;
+    $.get(gf, function (data) {
+      data = JSON.parse(data);
+      console.log('Retrieved logged in user name: ' + data);
+
+      if (data == false) { // user id exists, but is was NOT found, problem...
+        alert("User id exists, but data NOT found, probably recently deleted")
+        sessionStorage.removeItem("user_id")
+      }
+      else { // data found... good
+        $("#first_name").val(data.first_name);
+        $("#last_name").val(data.last_name);
+        $("#user_name").val(data.user_name);
+        $("#email").val(data.email);
+      } // end else, user name available
+
+    }); // end username check
+
+
+
+  }
+
+
+}
 
 
 function toLogin() {
