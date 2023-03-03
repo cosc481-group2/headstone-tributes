@@ -23,6 +23,7 @@ function validateUser() {
 
 
   // check user name / PW in DB?
+
   let gf = "/src/controller/UserController.php?func=getLog2&user_name=" + un + "&pw=" + pw;
 
   $.get(gf, function (data) {

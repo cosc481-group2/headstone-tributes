@@ -23,6 +23,7 @@
         .success {
             text-align: center;
             color: green;
+            font-weight: bold;
         }
 
         .center {
@@ -31,15 +32,15 @@
 
         .err {
             color: red;
+            text-align: center;
         }
     </style>
 </head>
 
 
-
 <body>
     <br>
-    <h1>Login </h1>
+    <h1 class="center"> Login </h1>
     <div class="card w-50 mx-auto my-4">
         <div class="card-body">
             <form action="">
@@ -51,35 +52,34 @@
                     <label class="form-label">password</label>
                     <input type="password" id="password" class="form-control">
                 </div>
-                <p></p>
+                
+                <br />
+                <input type="button" value="Submit" class="btn btn-primary" onclick="validateUser()" />
+                &nbsp&nbsp&nbsp
+                <input type="button" value="Register" class="btn btn-primary" onclick="toRegistation()" />
+                &nbsp&nbsp&nbsp&nbsp
+                <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
 
-                <label id="err" style="color:red">
-                    <!-- <br> -->
-                    <!-- this is a test error -->
+                <p></P>
 
-                </label>
-                <label id="success_msg" style="color:green">
-                    <!-- <br> -->
-                    <!-- this is a test error -->
-
-                </label>
-
-
-                <div>
-                    <input type="button" value="Submit" class="btn btn-primary" onclick="validateUser()" />
-                    &nbsp&nbsp&nbsp
-                    <input type="button" value="Register" class="btn btn-primary" onclick="toRegistation()" />
-                    &nbsp&nbsp&nbsp
-                    <input type="checkbox" id="remember" onclick="rememberCheckBox()">
-                    <label for="remember"> Remember Me </label>
-                    &nbsp&nbsp&nbsp&nbsp
-                    <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
-                </div>
-
-
-            </form>
+                <input type="checkbox" id="remember" onclick="rememberCheckBox()">
+                <label for="remember"> Remember me </label>
         </div>
+
+        </form>
     </div>
+    </div>
+    <p id="err" class="err">
+        <!-- Error msg goes here -->
+    </p>
+    <p id="success_msg" class="success" >
+        <!-- <br> -->
+        <!-- this is a test error -->
+
+    </p>
+
+
+
 </body>
 
 </html>

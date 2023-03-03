@@ -2,23 +2,58 @@ src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQu
 
 
 function validateNewUser() {
-  let ok = true;
-  $("#success_msg").html(""); 
-  
+
+  $("#success_msg").html("");
+
   const ob = {
     fName: $("#first_name").val(),
     lName: $("#last_name").val(),
     email: $("#email").val(),
     uName: $("#user_name").val(),
     pw1: $("#password1").val(),
-    pw2: $("#password1").val()
+    pw2: $("#password2").val(),
+    ok: true
   }
 
+  validateFLEP(ob);
+
+  
+  // User Name
+
+  if (ob.uName == "") {
+    $("#err_user_name").html("* Username is required");
+    ob.ok = false;
+  }
+  else {
+
+    let gf = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.uName;
+    $.get(gf, function (data) {
+      data = JSON.parse(data);
+      console.log('verifying user name: ' + data);
+
+      if (data != false) { // user name exists, problem...
+        $("#err_user_name").html("* This user name is already taken");
+        ob.ok = false;
+      }
+      else { // user name available... good
+        $("#err_user_name").html(""); // resets error text
+        updateTables(ob);
+      } // end else, user name available
+
+    }); // end username check
+
+  }
+
+} // end validate
+
+
+// FLEP -> First name, Last name, Email, Password
+function validateFLEP(ob) {
 
   // FIRST name
   if (ob.fName == "") { // check first name - blank
-    $("#err_first_name").html("* first name can not be blank");
-    ok = false;
+    $("#err_first_name").html("* first name is required");
+    ob.ok = false;
   }
   else {
     $("#err_first_name").html("");
@@ -26,8 +61,8 @@ function validateNewUser() {
 
   // LAST name
   if (ob.lName == "") { // check last name - blank
-    $("#err_last_name").html("* last name can not be blank");
-    ok = false
+    $("#err_last_name").html("* last name is required");
+    ob.ok = false
   }
   else {
     $("#err_last_name").html("");
@@ -36,7 +71,7 @@ function validateNewUser() {
   // Email
   if (!ob.email.includes("@")) { // check for @ in email
     $("#err_email").html("* Invalid email address");
-    ok = false;
+    ob.ok = false;
   }
   else {
     $("#err_email").html("");
@@ -45,46 +80,18 @@ function validateNewUser() {
   // Password validation
   if (ob.pw1 != ob.pw2 || ob.pw1 == "") {
     $("#err_password1").html("* Passwords blank or don't match");
-    ok = false;
+    ob.ok = false;
   }
   else {
     $("#err_password1").html("");
   }
 
-  // User Name
-  let gf = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.uName;
-
-
-
-  $.get(gf, function (data) {
-    data = JSON.parse(data);
-    console.log('verifying user name: ' + data);
-
-    if (ob.uName == "") {
-      $("#err_user_name").html("* Username can not be blank");
-      ok = false;
-    }
-    else if (data != false) { // user name exists, problem...
-      $("#err_user_name").html("* This user name is already taken");
-      ok = false;
-    }
-    else { // user name available... good
-      $("#err_user_name").html(""); // resets error text
-      if (ok) {
-        updateTables(ob);
-      }
-
-    } // end else, user name available
-
-  }); // end username check
-
-
-
-} // end validate
+} // end FLEP
 
 
 
 function updateTables(ob) {
+  if (!ob.ok) return;
 
   let gf = "/src/controller/UserController.php?func=nextId";
 

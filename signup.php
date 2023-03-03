@@ -21,6 +21,7 @@
         .success {
             text-align: center;
             color: green;
+            font-weight: bold;
         }
 
         .center {
@@ -33,8 +34,8 @@
     </style>
 
 <body>
-
-    <h1 class="center">New User Sign Up</h1>
+    <br>
+    <h1 class="center">Registration</h1>
     <div class="card w-50 mx-auto my-4">
 
         <div class="card-body">
@@ -76,13 +77,13 @@
             </p>
 
             <div>
-                <input type="button" value="Submit" id="submit" class="btn btn-primary" onclick="validateNewUser()" />
+                <input type="button" value="Submit" class="btn btn-primary" onclick="validateNewUser()" />
                 &nbsp&nbsp&nbsp
 
-                <input type="button" value="Go to login" id="login" class="btn btn-primary" onclick="toLogin()" />
+                <input type="button" value="Go to login" class="btn btn-primary" onclick="toLogin()" />
                 &nbsp&nbsp&nbsp
 
-                <input type="button" value="Home" id="login" class="btn btn-primary" onclick="toIndex()" />
+                <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
                 &nbsp&nbsp&nbsp
 
             </div>
