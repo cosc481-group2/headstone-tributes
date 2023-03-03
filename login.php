@@ -25,7 +25,8 @@
 
 
 
-    <div class="mt-3" >
+    <div class="mt-3 d-flex justify-content-between" >
+    <button class = "btn btn-success"> submit </button>
         <a href="signup.php" role="button" class = "btn btn-primary">click here to sign up</a>
 </div>
 </form>

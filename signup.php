@@ -20,22 +20,29 @@
     <div class="mt-3">
         <label for="last_name" class="form-label">last name</label>
         <input type="text" id = "last_name" class="form-control">
+
+    </div> 
         <div class="mt-3">
         <label for="email" class="form-label">email</label>
         <input type="text" id = "email" class="form-control">
+        </div> 
         <div class="mt-3">
         <label for="username" class="form-label">user name</label>
         <input type="text" id = "last_name" class="form-control">
+        </div> 
         <div class="mt-3">
         <label for="password" class="form-label">password</label>
         <input type="password" id = "password" class="form-control">
-    </div>
+        </div> 
+     
+    
 
 
-
-    <div class="mt-3" >
+    <div class="mt-3 d-flex justify-content-between" >
+    <button class = "btn btn-success"> submit </button>
         <a href="login.php" role="button" class = "btn btn-primary">already have an account? log in here</a>
-</div>
+        
+    </div>
 </form>
 
 </div>
