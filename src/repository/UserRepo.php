@@ -70,13 +70,15 @@ class UserRepo
         $query = "UPDATE {$this->table} SET "
                         . "FIRST_NAME = ?, "
                         . "LAST_NAME = ?, "
-                        . "EMAIL = ? "
-                        . "where USER_ID = ?";
+                        . "EMAIL = ?, "
+                        . "USER_NAME = ? "
+                        . "WHERE USER_ID = ?";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $user->getFirstname(), 
             $user->getLastname(),
             $user->getEmail(),
+            $user->getUsername(),
             $user->getUserId()
         ]);
     }

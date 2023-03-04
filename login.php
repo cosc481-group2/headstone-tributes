@@ -34,6 +34,12 @@
             color: red;
             text-align: center;
         }
+
+        .card {
+            card-body;
+            bg-secondary-subtle;
+
+        }
     </style>
 </head>
 
@@ -42,8 +48,12 @@
     <br>
     <h1 class="center"> Login </h1>
     <div class="card w-50 mx-auto my-4">
-        <div class="card-body">
-            <form action="">
+        
+    <div class="card-body bg-secondary-subtle">
+            
+        
+        
+        <form action="">
                 <div class="mt-3">
                     <label class="form-label">user name</label>
                     <input type="text" id="user_name" class="form-control">
@@ -54,11 +64,13 @@
                 </div>
                 
                 <br />
-                <input type="button" value="Submit" class="btn btn-primary" onclick="validateUser()" />
+                <input type="button" value="Submit" class="btn btn-success" onclick="validateUser()" />
                 &nbsp&nbsp&nbsp
                 <input type="button" value="Register" class="btn btn-primary" onclick="toRegistation()" />
                 &nbsp&nbsp&nbsp&nbsp
                 <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
+                &nbsp&nbsp&nbsp&nbsp
+                <input type="button" value="Logout" class="btn btn-dark" onclick="logout()" />
 
                 <p></P>
 

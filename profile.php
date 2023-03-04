@@ -32,6 +32,14 @@
             color: red;
         }
 
+        .err2 {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+
+
+
         hr {
             position: relative;
             top: 20px;
@@ -47,7 +55,7 @@
     <h1 class="center">Profile</h1>
     <div class="card w-50 mx-auto my-4">
 
-        <div class="card-body">
+        <div class="card-body bg-secondary-subtle">
             <p>First Name: &nbsp
                 <label id="err_first_name" class="err">
                 </label>
@@ -87,8 +95,7 @@
             </p>
 
             <div>
-                <input type="button" value="Update non-PW" class="btn btn-primary"
-                    onclick="validateProfile()" />
+                <input type="button" value="Update non-PW" class="btn btn-primary" onclick="validateProfNonPw()" />
                 &nbsp&nbsp&nbsp
 
                 <input type="button" value="Update PW" class="btn btn-primary" onclick="toLogin()" />
@@ -104,7 +111,8 @@
     </div>
     <p id="success_msg" class="success">
     </p>
-
+    <p id="onload_err" class="err2">
+    </p>
 
 </body>
 

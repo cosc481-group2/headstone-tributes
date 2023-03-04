@@ -1,6 +1,63 @@
 src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
 
 
+function validateProfNonPw() {
+  $("#success_msg").html("");
+  $("#err_user_name").html(""); // clears user name
+  $("#onload_err").html("");
+
+
+  const ob = {
+    fName: $("#first_name").val(),
+    lName: $("#last_name").val(),
+    email: $("#email").val(),
+    uName: $("#user_name").val(),
+    id: sessionStorage.getItem("user_id"),
+    ok: true,
+    err1: "No updates made"
+  }
+
+  validateFLE(ob);
+
+  let gf = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.uName;
+  $.get(gf, function (data) {
+    data = JSON.parse(data);
+    console.log('verifying user name: ' + data);
+
+    if (data != false && ob.uName != localStorage.getItem("user_name")) { // user name exists, problem...
+      $("#err_user_name").html("* This user name is already taken");
+      ob.ok = false;
+      $("#onload_err").html(ob.err1);
+    }
+    else { // user name available... good
+      updateTablesProfile(ob);
+    } // end else, user name available
+
+  }); // end username check
+
+}
+
+
+function updateTablesProfile(ob) {
+  if (!ob.ok) return;
+
+    let gf2 = "/src/controller/UserController.php";
+    $.post(gf2, {
+      func: "updateUser", user_id: ob.id, user_name: ob.uName, first_name: ob.fName,
+      last_name: ob.lName, email: ob.email
+    }, function (data) {
+
+      let msg = 'Success... Non-pw profile data updated'
+      console.log(msg);
+      $("#success_msg").html(msg);
+    }); // end postupdate login tbl
+
+}
+
+
+
+
+
 function validateNewUser() {
 
   $("#success_msg").html("");
@@ -15,8 +72,16 @@ function validateNewUser() {
     ok: true
   }
 
-  validateFLEP(ob);
+  validateFLE(ob);
 
+  // Password validation
+  if (ob.pw1 != ob.pw2 || ob.pw1 == "") {
+    $("#err_password1").html("* Passwords blank or don't match");
+    ob.ok = false;
+  }
+  else {
+    $("#err_password1").html("");
+  }
 
   // User Name
 
@@ -47,8 +112,13 @@ function validateNewUser() {
 } // end validate
 
 
-// FLEP -> First name, Last name, Email, Password
-function validateFLEP(ob) {
+
+
+
+
+
+// FLE -> First name, Last name, Email
+function validateFLE(ob) {
 
   // FIRST name
   if (ob.fName == "") { // check first name - blank
@@ -77,14 +147,7 @@ function validateFLEP(ob) {
     $("#err_email").html("");
   }
 
-  // Password validation
-  if (ob.pw1 != ob.pw2 || ob.pw1 == "") {
-    $("#err_password1").html("* Passwords blank or don't match");
-    ob.ok = false;
-  }
-  else {
-    $("#err_password1").html("");
-  }
+
 
 } // end FLEP
 
@@ -120,24 +183,21 @@ function updateTables(ob) {
 
 
 
-
-
-
-
 function onLoadNewUser() {
   validateNewUser();
 }
 
 
-
 function onLoadProfile() {
   // load current
-  let id = sessionStorage.getItem("user_id")
-  if (id == null) {
-    alert('No user in sessionStorage... should NEVER get here!')
+  
+  if (sessionStorage.getItem("is_login_ok") != "true") {
+    $("#onload_err").html("Should never get here, use sessionStorage var 'user_id' == null to disable button");
   }
 
   else {
+
+    let id = sessionStorage.getItem("user_id");
     let gf = "/src/controller/UserController.php?func=get&user_id=" + id;
     $.get(gf, function (data) {
       data = JSON.parse(data);
@@ -156,10 +216,7 @@ function onLoadProfile() {
 
     }); // end username check
 
-
-
   }
-
 
 }
 

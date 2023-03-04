@@ -39,7 +39,7 @@
     <h1 class="center">Registration</h1>
     <div class="card w-50 mx-auto my-4">
 
-        <div class="card-body">
+        <div class="card-body bg-secondary-subtle">
             <p>First Name: &nbsp
                 <label id="err_first_name" class="err">
                 </label>
@@ -80,7 +80,7 @@
             </p>
 
             <div>
-                <input type="button" value="Submit" class="btn btn-primary" onclick="validateNewUser()" />
+                <input type="button" value="Submit" class="btn btn-success" onclick="validateNewUser()" />
                 &nbsp&nbsp&nbsp
 
                 <input type="button" value="Go to login" class="btn btn-primary" onclick="toLogin()" />
