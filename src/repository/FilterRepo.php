@@ -23,7 +23,6 @@ class FilterRepo
         $this->pdo = $db->getPDO();
     }
 
-
     public function getFiltered(string $filt_str)
     {
         $query = "SELECT * FROM {$this->table} WHERE str2search LIKE ? "; 
@@ -33,6 +32,17 @@ class FilterRepo
         
         $stmt->execute(['%' . strtolower($filt_str) . '%']);
         return $stmt->fetchAll();
+    }
+
+    public function getById(int $id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE dec_id = ?";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Model\Filter');
+        
+        $stmt->execute([$id]);
+        return $stmt->fetch();
     }
    
 }
