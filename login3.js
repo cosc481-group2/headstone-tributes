@@ -93,3 +93,15 @@ function toRegistation() {
 function toIndex() {
   window.location.href = "index.php";
 }
+
+function logout() {
+  if (sessionStorage.getItem("is_login_ok")){
+    sessionStorage.removeItem("is_login_ok");
+  $("#success_msg").html("Success.... Member logged out");
+  }
+  else {
+    $("#success_msg").html("Nobody currently logged in");
+  }
+  
+  
+}
