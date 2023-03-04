@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>HeadStone-Tributes.com</title>
 </head>
+
 <body>
-    
+
     <div class="container-fluid text-center h-100">
         <div class="row">
             <nav class="navbar navbar-dark bg-dark">
@@ -26,17 +29,19 @@
                 </div>
             </nav>
         </div>
-        <div class="row"> 
-        <div class="btn-group" role="group" aria-label="Basic example">
-  <a href ="login.php" role="button" class="btn btn-success ">log in</a>
-  <a href ="signup.php" role="button" class="btn btn-success">sign up</a>
-  <a href ="create_new.php" role="button" class="btn btn-success">add a new deceased</a>
-  <a href ="profile.php" role="button" class="btn btn-success">profile</a>
-</div>
-<div class="row p-0">
-          
-            
-        </div>
+        <div class="row">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="login.php" role="button" class="btn btn-success ">log in</a>
+                <a href="signup.php" role="button" class="btn btn-success">sign up</a>
+                <a href="create_new.php" role="button" class="btn btn-success">add a new deceased</a>
+                <a href="profile.php" role="button" class="btn btn-success">profile</a>
+            </div>
+
+
+            <div class="row p-0">
+
+
+            </div>
         </div>
 
       
@@ -91,13 +96,16 @@
         <div class="row">
             <div class="col-4 m-2">
                 
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

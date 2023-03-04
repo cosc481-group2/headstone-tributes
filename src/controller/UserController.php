@@ -9,6 +9,29 @@ use MODEL\User;
 use MODEL\Login;
 
 
+function getNextId() 
+{
+    $service = new userService();
+    $user = $service->getNextId();
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+
+function getLogByIdPw_2() 
+{
+    $service = new userService();
+    $user = $service->getLoginByIdPw_2($_GET["user_name"], $_GET['pw']);
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+function getLogByIdPw() 
+{
+    $service = new userService();
+    $user = $service->getLoginByIdPw($_GET["user_id"], $_GET['pw']);
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+
 function getAllUsers()
 {
     $service = new userService();
@@ -16,6 +39,16 @@ function getAllUsers()
     echo json_encode($users, JSON_PRETTY_PRINT);
     return;
 }
+
+
+function getUserByUserName()
+{
+    $service = new userService();
+    $user = $service->getIDbyUN($_GET["user_name"]);
+    echo json_encode($user, JSON_PRETTY_PRINT); // this is key for JS 
+    return;
+}
+
 
 function getUser()
 {
@@ -63,6 +96,18 @@ if(isset($_GET["func"]))
             break;
         case 'get':
             getUser();
+            break;
+        case 'getByUN':
+            getUserByUserName();
+            break;
+        case 'getLogByIdPw':
+            getLogByIdPw();
+            break;
+        case 'getLog2':
+            getLogByIdPw_2();
+            break;
+        case 'nextId':
+            getNextId();
             break;
     }
     
