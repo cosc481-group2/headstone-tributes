@@ -34,6 +34,7 @@
     </style>
 
 <body>
+
     <br>
     <h1 class="center">Registration</h1>
     <div class="card w-50 mx-auto my-4">
@@ -58,7 +59,9 @@
                 </label>
                 <input type="text" id="user_name" class="form-control" />
 
+
             </p>
+
 
             <p>E-mail: &nbsp
                 <label id="err_email" class="err">
@@ -93,7 +96,6 @@
     </div>
     <p id="success_msg" class="success">
     </p>
-
 
 </body>
 
