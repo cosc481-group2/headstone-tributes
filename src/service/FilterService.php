@@ -22,6 +22,11 @@ class FilterService
         return $this->filterRepo->getFiltered($filt_str);
     }
 
+    public function getFilteredDeceasedById(int $id)
+    {
+        return $this->filterRepo->getById($id);
+    }
+
 }
 
 
