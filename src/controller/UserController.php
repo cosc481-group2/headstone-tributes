@@ -77,7 +77,8 @@ function addUser()
     return;
 }
 
-function updateUser(){
+function updateUser()
+{
     $user = new User();
     $user->setUserId($_POST["user_id"]);
     $user->setUsername($_POST["user_name"]);
@@ -87,6 +88,13 @@ function updateUser(){
 
     $service = new userService();
     $service->updateUser($user);
+    return;
+}
+
+function updatePw()
+{
+    $service = new userService();
+    $service->updatePw($_POST["user_id"], $_POST["pw"]);
     return;
 }
 
@@ -135,6 +143,9 @@ if (isset($_GET["func"])) {
             break;
         case 'updateUser':
             updateUser();
+            break;
+        case 'updatePw':
+            updatePw();
             break;
     }
 }

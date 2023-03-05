@@ -1,6 +1,47 @@
 src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
 
 
+function updatePw(){
+  $("#success_msg").html("");
+  $("#err_password1").html(""); // clears user name
+  $("#onload_err").html("");
+
+
+  const ob = {
+    pw1: $("#password1").val(),
+    pw2: $("#password2").val(),
+    id: sessionStorage.getItem("user_id"),
+    err1: "No updates made"
+    
+  }
+
+  // Password validation
+  if (sessionStorage.getItem("is_login_ok") != "true") {
+    $("#onload_err").html("No user is logged in, No action taken");
+  }
+  
+  else if (ob.pw1 != ob.pw2 || ob.pw1 == "") {
+    $("#err_password1").html("* Passwords blank or don't match");
+    $("#onload_err").html(ob.err1);
+  }
+  else {
+    let gf = "/src/controller/UserController.php";
+    $.post(gf, {
+      func: "updatePw", pw: ob.pw1, user_id: ob.id}, function (data) {
+
+      let msg = 'Success... Password updated'
+      console.log(msg);
+      $("#success_msg").html(msg);
+    }); // end postupdate login tbl
+
+
+
+  } // end else
+  
+} // end update pw
+
+
+
 function validateProfNonPw() {
   $("#success_msg").html("");
   $("#err_user_name").html(""); // clears user name

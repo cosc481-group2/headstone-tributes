@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="newUser.js"></script>
+
 
 <head>
     <meta charset="UTF-8">
@@ -10,12 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Profile</title>
-    <script>
 
-        $(document).ready(function () {
-            onLoadProfile();
-        });
-    </script>
+
 
     <style>
         .success {
@@ -98,7 +93,7 @@
                 <input type="button" value="Update non-PW" class="btn btn-primary" onclick="validateProfNonPw()" />
                 &nbsp&nbsp&nbsp
 
-                <input type="button" value="Update PW" class="btn btn-primary" onclick="toLogin()" />
+                <input type="button" value="Update PW" class="btn btn-primary" onclick="updatePw()" />
                 &nbsp&nbsp&nbsp
 
                 <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
@@ -117,3 +112,12 @@
 </body>
 
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/public/js/newUser.js"></script>
+<script>
+
+    $(document).ready(function () {
+        onLoadProfile();
+    });
+</script>

@@ -64,6 +64,12 @@ class UserService
     {
         $this->userRepo->updateById($user);
     }
+    public function updatePw(int $user_id, string $pw)
+    {
+        $this->loginRepo->updatePw($user_id, $pw);
+    }
+
+
 }
 
 
