@@ -7,7 +7,7 @@ function validateUser() {
   $("#success_msg").html("");
 
   sessionStorage.setItem("is_login_ok", false);
-  var un = $("#user_name").val(); // use var for global scope
+  var un = $("#user_name").val().toLowerCase(); // use var for global scope, make case insensitive
   var pw = $("#password").val();
 
 
@@ -54,16 +54,24 @@ function validateUser() {
 } // end validate
 
 function onLoadLogin() {
-  let un = $("#user_name").val(); // use var for global scope
+
   let checked = localStorage.getItem("rememberMe");
 
-  let LastUsert = localStorage.getItem("user_name");
+  let LastUser = localStorage.getItem("user_name");
+
+  if (sessionStorage.getItem("is_login_ok") == "true") {
+    let m = "User: " + localStorage.getItem("user_name") + " is currently logged in"
+    $("#success_msg").html(m);
+  }
+
+
+
   if (checked != "true") {
     return
   }
   else {
-    if (LastUsert) {
-      $("#user_name").val(LastUsert);
+    if (LastUser) {
+      $("#user_name").val(LastUser);
       document.getElementById("remember").checked = true;
       console.log('Defaulted to last known user');
     }

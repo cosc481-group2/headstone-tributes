@@ -68,7 +68,7 @@
                 &nbsp&nbsp&nbsp
                 <input type="button" value="Register" class="btn btn-primary" onclick="toRegistation()" />
                 &nbsp&nbsp&nbsp&nbsp
-                <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
+                <input type="button" value="Home" class="btn btn-primary" onclick="toIndex()" />
                 &nbsp&nbsp&nbsp&nbsp
                 <input type="button" value="Logout" class="btn btn-dark" onclick="logout()" />
 

@@ -81,7 +81,7 @@ function updateUser()
 {
     $user = new User();
     $user->setUserId($_POST["user_id"]);
-    $user->setUsername($_POST["user_name"]);
+    $user->setUsername($_POST["user_name"]); // makes username case insensitive
     $user->setFirstname($_POST["first_name"]);
     $user->setLastname($_POST["last_name"]);
     $user->setEmail($_POST["email"]);

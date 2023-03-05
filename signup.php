@@ -81,7 +81,7 @@
                 <input type="button" value="Go to login" class="btn btn-primary" onclick="toLogin()" />
                 &nbsp&nbsp&nbsp
 
-                <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
+                <input type="button" value="Home" class="btn btn-primary" onclick="toIndex()" />
                 &nbsp&nbsp&nbsp
 
             </div>

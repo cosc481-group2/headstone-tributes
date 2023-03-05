@@ -52,7 +52,7 @@ function validateProfNonPw() {
     fName: $("#first_name").val(),
     lName: $("#last_name").val(),
     email: $("#email").val(),
-    uName: $("#user_name").val(),
+    uName: $("#user_name").val().toLowerCase(),
     id: sessionStorage.getItem("user_id"),
     ok: true,
     err1: "No updates made"
@@ -91,6 +91,8 @@ function updateTablesProfile(ob) {
       let msg = 'Success... Non-pw profile data updated'
       console.log(msg);
       $("#success_msg").html(msg);
+      sessionStorage.setItem("first_name", ob.fName);
+      localStorage.setItem("user_name", ob.uName);
     }); // end postupdate login tbl
 
 }
@@ -107,7 +109,7 @@ function validateNewUser() {
     fName: $("#first_name").val(),
     lName: $("#last_name").val(),
     email: $("#email").val(),
-    uName: $("#user_name").val(),
+    uName: $("#user_name").val().toLowerCase(),
     pw1: $("#password1").val(),
     pw2: $("#password2").val(),
     ok: true
