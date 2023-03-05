@@ -35,11 +35,6 @@
             text-align: center;
         }
 
-        .card {
-            card-body;
-            bg-secondary-subtle;
-
-        }
     </style>
 </head>
 
