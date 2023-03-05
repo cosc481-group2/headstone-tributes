@@ -11,23 +11,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Petit+Formal+Script&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <style>
-        .display-1 {
-            font-size: 7rem;
-        }
-    </style>
 </head>
 <body>
 
     <div class="container-fluid min-vh-100">
         <div class="row min-vh-100">
-            <div style="background-color:#483248;" class="col-md-12 col-xl-6 text-white text-end text-uppercase p-3 min-vh-100">
+            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-6 text-white text-end text-uppercase p-3 min-vh-100">
                 <div class="fw-bold p-0 d-flex flex-column align-items-end">
                     <div class="obituary-pic ob-photo" >
                         <i class="bi bi-person-bounding-box" style="font-size:20rem;"></i>
                     </div>
                     <div class="text-warp p-0">
-                        <span class="shadow-sm lh-1 display-1 fw-bold ob-name" ></span>
+                        <span class="lh-1 display-1 fw-bold ob-name" style="font-size:9vh;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);"></span>
                     </div>
                 </div>
                 <div class="mt-3 fs-1">
@@ -61,15 +56,20 @@
                 </div>
             </div>
         </div>
-        <div class="row bg-secondary p-4 justify-content-center">
-            <div class="col-xl-6 col-lg-12">
-                <div class="card border border-0">
-                    <div style="background-color:#483248;" class="card-header p-4 d-flex justify-content-evenly">
+        <div class="row bg-secondary-subtle p-4 justify-content-center">
+            <div class="col-xl-1 col-lg-12 p-0">
+               
+                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Edit Obituary</button>
+                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Add Tribute</button>
+                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Edit Tribute</button>
+                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Delete Tribute</button>
+                
+            </div>
+            <div class="col-xl-6 col-lg-12 p-0">
+                <div class="card border border-0 mx-xl-3 mx-md-0 my-xl-0 my-md-2">
+                    <div style="background-color:#483248;" class="tribute-header card-header p-md-1 p-xl-4 d-flex justify-content-evenly">
                         <div>
                             <h1 style="font-family: 'Dancing Script', cursive;" class="text-white h1">Obituary Tributes:</h1>
-                        </div>
-                        <div>
-                            <button class="btn btn-success">Add Tribute</button>
                         </div>
                     </div>
                     <div class="card-body tribute-list"></div>
@@ -85,6 +85,12 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const obituaryId = urlParams.get('id');
+
+            var scheme = ["#483248","#8B8000","#4863A0","#838996","#B86500","#BAB86C"]
+
+            var randomNum = Math.floor(Math.random() * 6);
+
+            $(".main-col, .tribute-header").css("background-color", scheme[randomNum]);
             
             $.get("/src/controller/FilterController?func=get&id=" + obituaryId,function(data) {
                 //console.log(data);
@@ -106,8 +112,9 @@
                 
                 $(".obituary").html(ob.obit);
 
-                $(".ob-photo").html("<img src='/public/img/face1.jpg' class='img-thumbnail' style='max-height:50vh;'  />");
+                var randomNum = Math.floor(Math.random() * 3) + 1;
 
+                $(".ob-photo").html("<img src='/public/img/face" + randomNum + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
             });
 
             $.get("/src/controller/TributeController?func=getByDec&dec_id=" + obituaryId, function(data) {
@@ -116,7 +123,7 @@
 
                 $.each(tributes, function(index, t) {
 
-                    var card = `<div class="card m-5 shadow">
+                    var card = `<div class="card m-md-2 m-xl-3 shadow">
                                     <div class="card-body">
                                         <figure>
                                             <blockquote class="blockquote">
