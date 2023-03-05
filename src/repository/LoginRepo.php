@@ -67,19 +67,17 @@ class LoginRepo
         return $stmt->fetch();
     }
 
-    public function updateById(Login $login)
+    public function updatePw(int $user_id, string $pw)
     {
         $query = "UPDATE {$this->table} SET "
-                        . "pw = ?, "
-                        . "comments = ? "
+                        . "pw = ? "
                         . "where user_id = ?";
 
-        $stmt = $this->pdo->prepare($query)->execute([
-            $login->getPassword(),
-            $login->getComments(),
-            $login->getUserId()
-        ]);
+        $stmt = $this->pdo->prepare($query)->execute([$pw, $user_id]);
     }
+
+
+
 
     public function deleteById(int $id)
     {

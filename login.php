@@ -3,7 +3,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="login3.js"></script>
+
 <html lang="en">
 
 
@@ -35,11 +35,6 @@
             text-align: center;
         }
 
-        .card {
-            card-body;
-            bg-secondary-subtle;
-
-        }
     </style>
 </head>
 
@@ -48,12 +43,12 @@
     <br>
     <h1 class="center"> Login </h1>
     <div class="card w-50 mx-auto my-4">
-        
-    <div class="card-body bg-secondary-subtle">
-            
-        
-        
-        <form action="">
+
+        <div class="card-body bg-secondary-subtle">
+
+
+
+            <form action="">
                 <div class="mt-3">
                     <label class="form-label">user name</label>
                     <input type="text" id="user_name" class="form-control">
@@ -62,13 +57,13 @@
                     <label class="form-label">password</label>
                     <input type="password" id="password" class="form-control">
                 </div>
-                
+
                 <br />
                 <input type="button" value="Submit" class="btn btn-success" onclick="validateUser()" />
                 &nbsp&nbsp&nbsp
                 <input type="button" value="Register" class="btn btn-primary" onclick="toRegistation()" />
                 &nbsp&nbsp&nbsp&nbsp
-                <input type="button" value="Cancel" class="btn btn-primary" onclick="toIndex()" />
+                <input type="button" value="Home" class="btn btn-primary" onclick="toIndex()" />
                 &nbsp&nbsp&nbsp&nbsp
                 <input type="button" value="Logout" class="btn btn-dark" onclick="logout()" />
 
@@ -80,11 +75,12 @@
 
         </form>
     </div>
+
     </div>
     <p id="err" class="err">
         <!-- Error msg goes here -->
     </p>
-    <p id="success_msg" class="success" >
+    <p id="success_msg" class="success">
         <!-- <br> -->
         <!-- this is a test error -->
 
@@ -93,3 +89,4 @@
 </body>
 
 </html>
+<script src="/public/js/login.js"></script>
