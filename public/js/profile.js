@@ -12,15 +12,15 @@ function updateProfile() {
 
 
   const ob = {
-    firstName: $("#first_name").val(),
-    lastName: $("#last_name").val(),
+    first_name: $("#first_name").val(),
+    last_name: $("#last_name").val(),
     email: $("#email").val(),
-    userName: $("#user_name").val().toLowerCase(),
-    id: sessionStorage.getItem("user_id"),
+    user_name: $("#user_name").val().toLowerCase(),
+    user_id: sessionStorage.getItem("user_id"),
     ok: true,
-    err1: "No updates made",
     pw1: $("#password1").val(),
     pw2: $("#password2").val(),
+    pw: $("#password1").val(),
     success_msg: ""
 
   }
@@ -39,17 +39,36 @@ function updateProfile() {
   }
   else { // change password
     let url = "/src/controller/UserController.php";
-    $.ajax({ url: url, method: 'post', async: false }).done({
-      func: "updatePw", pw: ob.pw1, user_id: ob.id
-    }, function (data) {
-      let msg = 'Password updated'
-      console.log(ob.success_msg);
+    ob.func = "updatePw"
+    $.post(url, ob, function (data) {
+      let msg = 'Success... Password updated'
+      console.log(msg);
       $("#success_msg2").html(msg);
     }); // end postupdate login tbl
+
 
   }
 
 } // end profile update
+
+
+
+//UPDATE NON-PASSWORD DATA
+function updateNonPWs(ob) {
+  if (!ob.ok) {
+    return;
+  }
+
+  else { // execute post call
+    let url = "/src/controller/UserController.php";
+    ob.func = "updateUser"
+    $.post(url, ob, function (data) {
+      let msg = 'NON-Password data updated'
+      console.log(msg);
+      $("#success_msg").html(msg);
+    }); // end non pw updates
+  }
+} // NON-PW updates
 
 
 
@@ -82,33 +101,11 @@ function validateUserName(ob) {
 
 
 
-function updateNonPWs(ob) {
-  if (!ob.ok) return;
-
-  let url = "/src/controller/UserController.php";
-  $.ajax({url:url, method: 'post', async:false }).done({
-    func: "updateUser", user_id: ob.id, user_name: ob.userName, first_name: ob.firstName,
-    last_name: ob.lastName, email: ob.email
-  }, function (data) {
-
-    let msg = 'Non-password data updated';
-    $("#success_msg").html(msg);
-    console.log(msg);
-    sessionStorage.setItem("first_name", ob.firstName);
-    localStorage.setItem("user_name", ob.userName);
-  }); // end postupdate login tbl
-
-}
-
-
-
-
-
 // FLE -> First name, Last name, Email
 function validateFLE(ob) {
 
   // FIRST name
-  if (ob.firstName == "") { // check first name - blank
+  if (ob.first_name == "") { // check first name - blank
     $("#err_first_name").html("* first name is required");
     ob.ok = false;
   }
@@ -117,7 +114,7 @@ function validateFLE(ob) {
   }
 
   // LAST name
-  if (ob.lastName == "") { // check last name - blank
+  if (ob.last_name == "") { // check last name - blank
     $("#err_last_name").html("* last name is required");
     ob.ok = false
   }
@@ -173,3 +170,7 @@ function onLoadProfile() {
   } // end else, user name available
 
 } // end onLoad
+
+function toIndex() {
+  window.location.href = "index.php";
+}
