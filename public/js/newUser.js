@@ -14,6 +14,7 @@ function validateNewUser() {
     user_name: $("#user_name").val().toLowerCase(),
     pw1: $("#password1").val(),
     pw2: $("#password2").val(),
+    pw: $("#password1").val(),
     ok: true,
     user_id: -1 // updated later
   }
@@ -28,7 +29,9 @@ function validateNewUser() {
   else {
     $("#err_password1").html("");
   }
-  updateTables;
+
+  updateTables(ob)
+
 } // end validate
 
 
@@ -44,36 +47,24 @@ function validateNewUser() {
 function updateTables(ob) {
   if (!ob.ok) return;
 
-  var data2
+  var current_max_id
   let url = "/src/controller/UserController.php?func=nextId";
   $.ajax({ url: url, method: 'get', async: false }).done(function (data) {
-    data2 = JSON.parse(data);
-  }); // end username check
-  ob.user_id = data2 + 1;
-
-
-
-  let gf = "/src/controller/UserController.php?func=nextId";
-
-  $.get(gf, function (data) {
     data = JSON.parse(data);
-    console.log('Getting next id: ' + data);
-    ob.id = data.max_current_id + 1;
-
-    let gf2 = "/src/controller/UserController.php";
-    $.post(gf2, {
-      func: "add", user_id: ob.id, pw: ob.pw1, user_name: ob.user_name, first_name: ob.first_name,
-      last_name: ob.last_name, email: ob.email
-    }, function (data) {
-      let msg = 'Success... User entered into database'
-      console.log(msg);
-      $("#success_msg").html(msg);
+    current_max_id = data.max_current_id
+    console.log("Current max id: " + current_max_id);
+  }); // end username check
+  ob.user_id = current_max_id + 1;
 
 
 
-    }); // end update login tbl
-
-  }); // end next id
+  ob.func = "add"
+  url = "/src/controller/UserController.php";
+  $.post(url, ob, function (data) {
+    let msg = 'Success... User entered into database'
+    console.log(msg);
+    $("#success_msg").html(msg);
+  }); // end update login tbl
 
 
 }
@@ -149,7 +140,7 @@ function validateUserName(ob) {
     ob.ok = false;
     $("#err_user_name").html("* This user name is already taken");
   }
-  
+
   else { // user name is available
     $("#err_user_name").html("");
   }
