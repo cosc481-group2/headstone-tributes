@@ -1,7 +1,10 @@
 /*
 Andy Bodnar
 COSC 481
+Winter 2023
 */
+
+
 
 function updateProfile() {
   $("#success_msg").html("");
@@ -75,19 +78,19 @@ function updateNonPWs(ob) {
 // VALIDATE USER
 function validateUserName(ob) {
   // is username Blank???
-  if (ob.userName == "") {
+  if (ob.user_name == "") {
     ob.ok = false;
     $("#err_user_name").html("* Username can NOT be blank");
     return;
   }
 
   // Is username unchanged???   
-  if (ob.userName == localStorage.getItem("user_name"))
+  if (ob.user_name == localStorage.getItem("user_name"))
     return;
 
   // Does user exist???
   var data2
-  let url = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.userName;
+  let url = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.user_name;
   $.ajax({ url: url, method: 'get', async: false }).done(function (data) {
     data2 = JSON.parse(data);
   }); // end username check
@@ -139,7 +142,7 @@ function validateFLE(ob) {
 
 
 
-
+// PAGE ON-LOAD, pre-populates fields
 function onLoadProfile() {
 
   // Logged in??????
@@ -171,6 +174,9 @@ function onLoadProfile() {
 
 } // end onLoad
 
+
+
+// REDIRECT TO HOME
 function toIndex() {
   window.location.href = "index.php";
 }

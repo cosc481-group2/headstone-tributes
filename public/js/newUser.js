@@ -1,87 +1,6 @@
 src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
 
 
-function updatePw(){
-  $("#success_msg").html("");
-  $("#err_password1").html(""); // clears user name
-  $("#onload_err").html("");
-
-
-  const ob = {
-    pw1: $("#password1").val(),
-    pw2: $("#password2").val(),
-    id: sessionStorage.getItem("user_id"),
-    err1: "No updates made"
-    
-  }
-
-  // Password validation
-  if (sessionStorage.getItem("is_login_ok") != "true") {
-    $("#onload_err").html("No user is logged in, No action taken");
-  }
-  
-  else if (ob.pw1 != ob.pw2 || ob.pw1 == "") {
-    $("#err_password1").html("* Passwords blank or don't match");
-    $("#onload_err").html(ob.err1);
-  }
-  else {
-    let gf = "/src/controller/UserController.php";
-    $.post(gf, {
-      func: "updatePw", pw: ob.pw1, user_id: ob.id}, function (data) {
-
-      let msg = 'Success... Password updated'
-      console.log(msg);
-      $("#success_msg").html(msg);
-    }); // end postupdate login tbl
-
-
-
-  } // end else
-  
-} // end update pw
-
-
-
-function validateProfNonPwxxxxxxxxxxxxxxxxx() {
-  $("#success_msg").html("");
-  $("#err_user_name").html(""); // clears user name
-  $("#onload_err").html("");
-
-
-  const ob = {
-    fName: $("#first_name").val(),
-    lName: $("#last_name").val(),
-    email: $("#email").val(),
-    uName: $("#user_name").val().toLowerCase(),
-    id: sessionStorage.getItem("user_id"),
-    ok: true,
-    err1: "No updates made"
-  }
-
-  validateFLE(ob);
-
-  let gf = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.uName;
-  $.get(gf, function (data) {
-    data = JSON.parse(data);
-    console.log('verifying user name: ' + data);
-
-    if (data != false && ob.uName != localStorage.getItem("user_name")) { // user name exists, problem...
-      $("#err_user_name").html("* This user name is already taken");
-      ob.ok = false;
-      $("#onload_err").html(ob.err1);
-    }
-    else { // user name available... good
-      updateTablesProfile(ob);
-    } // end else, user name available
-
-  }); // end username check
-
-}
-
-
-
-
-
 
 
 function validateNewUser() {
@@ -89,15 +8,16 @@ function validateNewUser() {
   $("#success_msg").html("");
 
   const ob = {
-    fName: $("#first_name").val(),
-    lName: $("#last_name").val(),
+    first_name: $("#first_name").val(),
+    last_name: $("#last_name").val(),
     email: $("#email").val(),
-    uName: $("#user_name").val().toLowerCase(),
+    user_name: $("#user_name").val().toLowerCase(),
     pw1: $("#password1").val(),
     pw2: $("#password2").val(),
-    ok: true
+    ok: true,
+    user_id: -1 // updated later
   }
-
+  validateUserName(ob);
   validateFLE(ob);
 
   // Password validation
@@ -108,33 +28,7 @@ function validateNewUser() {
   else {
     $("#err_password1").html("");
   }
-
-  // User Name
-
-  if (ob.uName == "") {
-    $("#err_user_name").html("* Username is required");
-    ob.ok = false;
-  }
-  else {
-
-    let gf = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.uName;
-    $.get(gf, function (data) {
-      data = JSON.parse(data);
-      console.log('verifying user name: ' + data);
-
-      if (data != false) { // user name exists, problem...
-        $("#err_user_name").html("* This user name is already taken");
-        ob.ok = false;
-      }
-      else { // user name available... good
-        $("#err_user_name").html(""); // resets error text
-        updateTables(ob);
-      } // end else, user name available
-
-    }); // end username check
-
-  }
-
+  updateTables;
 } // end validate
 
 
@@ -150,6 +44,15 @@ function validateNewUser() {
 function updateTables(ob) {
   if (!ob.ok) return;
 
+  var data2
+  let url = "/src/controller/UserController.php?func=nextId";
+  $.ajax({ url: url, method: 'get', async: false }).done(function (data) {
+    data2 = JSON.parse(data);
+  }); // end username check
+  ob.user_id = data2 + 1;
+
+
+
   let gf = "/src/controller/UserController.php?func=nextId";
 
   $.get(gf, function (data) {
@@ -159,8 +62,8 @@ function updateTables(ob) {
 
     let gf2 = "/src/controller/UserController.php";
     $.post(gf2, {
-      func: "add", user_id: ob.id, pw: ob.pw1, user_name: ob.uName, first_name: ob.fName,
-      last_name: ob.lName, email: ob.email
+      func: "add", user_id: ob.id, pw: ob.pw1, user_name: ob.user_name, first_name: ob.first_name,
+      last_name: ob.last_name, email: ob.email
     }, function (data) {
       let msg = 'Success... User entered into database'
       console.log(msg);
@@ -182,9 +85,6 @@ function onLoadNewUser() {
 }
 
 
-
-
-
 function toLogin() {
   window.location.href = "login.php";
 }
@@ -192,3 +92,66 @@ function toLogin() {
 function toIndex() {
   window.location.href = "index.php";
 }
+
+
+// FLE -> First name, Last name, Email
+function validateFLE(ob) {
+
+  // FIRST name
+  if (ob.first_name == "") { // check first name - blank
+    $("#err_first_name").html("* first name is required");
+    ob.ok = false;
+  }
+  else {
+    $("#err_first_name").html("");
+  }
+
+  // LAST name
+  if (ob.last_name == "") { // check last name - blank
+    $("#err_last_name").html("* last name is required");
+    ob.ok = false
+  }
+  else {
+    $("#err_last_name").html("");
+  }
+
+  // Email
+  if (!ob.email.includes("@")) { // check for @ in email
+    $("#err_email").html("* Invalid email address");
+    ob.ok = false;
+  }
+  else {
+    $("#err_email").html("");
+  }
+
+
+} // end FLE
+
+
+// VALIDATE USER
+function validateUserName(ob) {
+  // is username Blank???
+  if (ob.user_name == "") {
+    ob.ok = false;
+    $("#err_user_name").html("* Username can NOT be blank");
+    return;
+  }
+
+
+  // Does user exist???
+  var data2
+  let url = "/src/controller/UserController.php?func=getByUN&user_name=" + ob.user_name;
+  $.ajax({ url: url, method: 'get', async: false }).done(function (data) {
+    data2 = JSON.parse(data);
+  }); // end username check
+
+  if (data2 != false) { // found a user
+    ob.ok = false;
+    $("#err_user_name").html("* This user name is already taken");
+  }
+  
+  else { // user name is available
+    $("#err_user_name").html("");
+  }
+
+} // end validate User Name
