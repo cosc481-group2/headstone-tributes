@@ -42,7 +42,7 @@ function updatePw(){
 
 
 
-function validateProfNonPw() {
+function validateProfNonPwxxxxxxxxxxxxxxxxx() {
   $("#success_msg").html("");
   $("#err_user_name").html(""); // clears user name
   $("#onload_err").html("");
@@ -79,23 +79,6 @@ function validateProfNonPw() {
 }
 
 
-function updateTablesProfile(ob) {
-  if (!ob.ok) return;
-
-    let gf2 = "/src/controller/UserController.php";
-    $.post(gf2, {
-      func: "updateUser", user_id: ob.id, user_name: ob.uName, first_name: ob.fName,
-      last_name: ob.lName, email: ob.email
-    }, function (data) {
-
-      let msg = 'Success... Non-pw profile data updated'
-      console.log(msg);
-      $("#success_msg").html(msg);
-      sessionStorage.setItem("first_name", ob.fName);
-      localStorage.setItem("user_name", ob.uName);
-    }); // end postupdate login tbl
-
-}
 
 
 
@@ -160,39 +143,7 @@ function validateNewUser() {
 
 
 
-// FLE -> First name, Last name, Email
-function validateFLE(ob) {
 
-  // FIRST name
-  if (ob.fName == "") { // check first name - blank
-    $("#err_first_name").html("* first name is required");
-    ob.ok = false;
-  }
-  else {
-    $("#err_first_name").html("");
-  }
-
-  // LAST name
-  if (ob.lName == "") { // check last name - blank
-    $("#err_last_name").html("* last name is required");
-    ob.ok = false
-  }
-  else {
-    $("#err_last_name").html("");
-  }
-
-  // Email
-  if (!ob.email.includes("@")) { // check for @ in email
-    $("#err_email").html("* Invalid email address");
-    ob.ok = false;
-  }
-  else {
-    $("#err_email").html("");
-  }
-
-
-
-} // end FLEP
 
 
 
@@ -231,37 +182,7 @@ function onLoadNewUser() {
 }
 
 
-function onLoadProfile() {
-  // load current
-  
-  if (sessionStorage.getItem("is_login_ok") != "true") {
-    $("#onload_err").html("Should never get here, use sessionStorage var 'user_id' == null to disable button");
-  }
 
-  else {
-
-    let id = sessionStorage.getItem("user_id");
-    let gf = "/src/controller/UserController.php?func=get&user_id=" + id;
-    $.get(gf, function (data) {
-      data = JSON.parse(data);
-      console.log('Retrieved logged in user name: ' + data);
-
-      if (data == false) { // user id exists, but is was NOT found, problem...
-        alert("User id exists, but data NOT found, probably recently deleted")
-        sessionStorage.removeItem("user_id")
-      }
-      else { // data found... good
-        $("#first_name").val(data.first_name);
-        $("#last_name").val(data.last_name);
-        $("#user_name").val(data.user_name);
-        $("#email").val(data.email);
-      } // end else, user name available
-
-    }); // end username check
-
-  }
-
-}
 
 
 function toLogin() {

@@ -90,10 +90,7 @@
             </p>
 
             <div>
-                <input type="button" value="Update non-PW" class="btn btn-primary" onclick="validateProfNonPw()" />
-                &nbsp&nbsp&nbsp
-
-                <input type="button" value="Update PW" class="btn btn-primary" onclick="updatePw()" />
+                <input type="button" value="Update" class="btn btn-primary" onclick="updateProfile()" />
                 &nbsp&nbsp&nbsp
 
                 <input type="button" value="Home" class="btn btn-primary" onclick="toIndex()" />
@@ -106,6 +103,8 @@
     </div>
     <p id="success_msg" class="success">
     </p>
+    <p id="success_msg2" class="success">
+    </p>
     <p id="onload_err" class="err2">
     </p>
 
@@ -114,7 +113,7 @@
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/public/js/newUser.js"></script>
+<script src="/public/js/profile.js"></script>
 <script>
 
     $(document).ready(function () {
