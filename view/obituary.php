@@ -25,7 +25,7 @@
                         <span class="lh-1 display-1 fw-bold ob-name" style="font-size:9vh;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);"></span>
                     </div>
                 </div>
-                <div class="mt-3 fs-1">
+                <div class="mt-4 fs-1 lh-1">
                     <p>
                         <span class="fw-bold">Birth:</span>
                         <span class="birth-date"></span>
@@ -38,19 +38,20 @@
             </div>
             <div class="col-md-12 col-xl-6 min-vh-100">
                 <div class="row h-25">
-                    <div class="col bg-secondary d-flex align-items-end p-3 text-white">
+                    <div class="col bg-dark d-flex align-items-end p-3 text-white">
                         <div>
-                            <h5 class="display-5">Cementary Info:</h5>
+                            <button class="btn btn-light btn-lg rounded-0 mb-5">Send Flowers</button>
+                            <h5 class="fs-3 fw-bold">Cementary Info:</h5>
                             <p>
-                                <span class="cem-name fs-3"></span><br>
-                                <span class="cem-city fs-3"></span>, <span class="cem-country fs-3"></span>
+                                <span class="cem-name fs-5"></span><br>
+                                <span class="cem-city fs-5"></span>, <span class="cem-country fs-5"></span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="row h-auto">
-                    <div class="col-xl-8 col-lg-12">
-                        <h3 style="color:#702963;" class="p-3 display-5">Obituary for:<br> <span class="ob-name"></span></h3>
+                <div class="row">
+                    <div class="col-xl-9 col-lg-12">
+                        <h3 style="color:#D4AF37;" class="p-3 fs-1 fw-bold">Obituary for:<br> <span class="ob-name"></span></h3>
                         <p class="h4 p-3 lead fs-1 obituary"></p>
                     </div>
                 </div>
@@ -59,10 +60,10 @@
         <div class="row bg-secondary-subtle p-4 justify-content-center">
             <div class="col-xl-1 col-lg-12 p-0">
                
-                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Edit Obituary</button>
-                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Add Tribute</button>
-                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Edit Tribute</button>
-                    <button type="button" class="btn btn-lg btn-secondary my-1 w-100">Delete Tribute</button>
+                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Edit Obituary</button>
+                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Add Tribute</button>
+                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Edit Tribute</button>
+                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Delete Tribute</button>
                 
             </div>
             <div class="col-xl-6 col-lg-12 p-0">
@@ -103,8 +104,8 @@
                 let b = new Date(ob.dt_born);
                 let d = new Date(ob.dt_passed);
 
-                $(".birth-date").html(b.getMonth() + "-" + b.getDate() + "-" + b.getFullYear());
-                $(".death-date").html(d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear());
+                $(".birth-date").html(getMonthName(b.getMonth()) + " " + b.getDate() + ", " + b.getFullYear());
+                $(".death-date").html(getMonthName(d.getMonth()) + " " + d.getDate() + ", " + d.getFullYear());
 
                 $(".cem-name").html(ob.cem_name);
                 $(".cem-city").html(ob.cem_city);
@@ -141,6 +142,15 @@
                 });
             });
         });
+
+        function getMonthName(monthNumber) {
+            const date = new Date();
+            date.setMonth(monthNumber - 1);
+
+            return date.toLocaleString('en-US', {
+                month: 'long',
+            });
+        }
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
