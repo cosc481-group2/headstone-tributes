@@ -1,5 +1,11 @@
-src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
+/*
+Andy Bodnar
+COSC 481
+Winter 2023
+*/
 
+
+src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
 
 
 
@@ -33,12 +39,6 @@ function validateNewUser() {
   updateTables(ob)
 
 } // end validate
-
-
-
-
-
-
 
 
 

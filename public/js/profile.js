@@ -44,7 +44,7 @@ function updateProfile() {
     let url = "/src/controller/UserController.php";
     ob.func = "updatePw"
     $.post(url, ob, function (data) {
-      let msg = 'Success... Password updated'
+      let msg = 'Password updated'
       console.log(msg);
       $("#success_msg2").html(msg);
     }); // end postupdate login tbl
@@ -66,7 +66,7 @@ function updateNonPWs(ob) {
     let url = "/src/controller/UserController.php";
     ob.func = "updateUser"
     $.post(url, ob, function (data) {
-      let msg = 'NON-Password data updated'
+      let msg = 'Non-Password data updated'
       console.log(msg);
       $("#success_msg").html(msg);
     }); // end non pw updates
