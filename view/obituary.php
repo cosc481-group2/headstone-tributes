@@ -85,6 +85,7 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const obituaryId = urlParams.get('id');
+            const pictureId = urlParams.get('picid');
 
             var scheme = ["#483248","#8B8000","#4863A0","#838996","#B86500","#BAB86C"]
 
@@ -112,9 +113,12 @@
                 
                 $(".obituary").html(ob.obit);
 
-                var randomNum = Math.floor(Math.random() * 3) + 1;
+                if(pictureId != null) {   
+                    var randomNum = Math.floor(Math.random() * 3) + 1;
+                   $(".ob-photo").html("<img src='/public/img/face" + pictureId + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
+                }
 
-                $(".ob-photo").html("<img src='/public/img/face" + randomNum + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
+                
             });
 
             $.get("/src/controller/TributeController?func=getByDec&dec_id=" + obituaryId, function(data) {
