@@ -36,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-md-12 col-xl-6 min-vh-100">
+            <div class="col-lg-12 col-xl-9 min-vh-100">
                 <div class="row h-25">
                     <div class="col bg-secondary d-flex align-items-end p-3 text-white">
                         <div>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="row h-auto">
-                    <div class="col-xl-8 col-lg-12">
+                    <div class="col-xl-9 col-lg-12">
                         <h3 style="color:#702963;" class="p-3 display-5">Obituary for:<br> <span class="ob-name"></span></h3>
                         <p class="h4 p-3 lead fs-1 obituary"></p>
                     </div>
