@@ -47,7 +47,7 @@
 
       
 <div class="p-5 text-center bg-image rounded-3" style="
-    background-image: url('./public/graveyard.jpg');
+    background-image: url('./public/img/img/graveyard.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
