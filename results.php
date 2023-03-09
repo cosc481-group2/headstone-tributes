@@ -64,11 +64,13 @@
                                 var randomNum = Math.floor(Math.random() * 3) + 1;
 
                                   var row = ` <div class="row border p-2 border-dark m-3">
-                                                    <div class="col-3"><img src="/public/img/face${randomNum}.jpg" class="img-fluid h-75" alt="/public/img/guy.jpg"></div>
+                                                    <div class="col-3"><img src="/public/img/face${randomNum}.jpg" class="img-fluid" alt="/public/img/guy.jpg"></div>
                                                     <div class="col m-2 text-start">
                                                         <div class="row h5 ">${deceased.d_first_name}</div>
-                                                        <div class="row h5">Detroit Michigan</div>
-                                                        <div class="row h5">Date of Birth: 10/26/1954 - Date of Death 4-16-2022</div>
+                                                        <div class="row h5">${deceased.d_mi}</div>
+                                                        <div class="row h5">${deceased.d_last_name}</div>
+                                                        <div class="row h5">Date of Birth: ${deceased.dt_born}</div>
+                                                        <div class="row h5">Date of Death: ${deceased.dt_passed}</div>
                                                         <div class="row"><input type="button" data-id="${deceased.dec_id}" class="btn btn-success get-obituary-button" value="View Obituary"></div>
                                                     </div>
                                                 </div>`
