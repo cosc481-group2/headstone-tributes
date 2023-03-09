@@ -36,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-12 col-xl-9 min-vh-100">
+            <div class="col-lg-12 col-xl-6 min-vh-100">
                 <div class="row h-25">
                     <div class="col bg-secondary d-flex align-items-end p-3 text-white">
                         <div>
