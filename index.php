@@ -47,7 +47,7 @@
 
       
 <div class="p-5 text-center bg-image rounded-3" style="
-    background-image: url('./public/graveyard.jpg');
+    background-image: url('./public/img/img/graveyard.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
@@ -70,7 +70,7 @@
 <div class=" h3 m-2 m-3 d-flex justify-content-left align-items-left ">headstones.com allows people to create pages for their loved ones for all to see, after the page has been created other loved ones can come by and leave tributes which let them talk about what that person meant to them and share fond memories.</div>
 
 <div class="row border p-2 border-dark m-3">
-    <div class="col-3 border "><img src="/public/img/guy.jpg" class="img-fluid" alt="/public/img/guy.jpg"></div>
+    <div class="col-3 border "><img src="/public/img/img/guy.jpg" class="img-fluid" alt="/public/img/guy.jpg"></div>
     <div class="col m-2 text-start">
         <div class="row h5 ">John smith</div>
         <div class="row h5">Detroit Michigan</div>
