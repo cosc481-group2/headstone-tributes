@@ -45,7 +45,7 @@
         <div class="row">
         <div class="container text-center">
             <div class="row d-flex justify-content-center">
-            <div class="col-7 search-results">
+            <div class="col-lg-12 col-xl-8 search-results">
             </div>  
 </div>
 </div>
