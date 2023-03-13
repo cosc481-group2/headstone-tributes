@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <title>HeadStone-Tributes.com</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>HeadStone-Tributes.com</title>
 </head>
 
 <body>
 
     <div class="container-fluid text-center h-100">
-    <div class="row">
+        <div class="row">
             <nav class="navbar navbar-dark bg-dark">
                 <div class="container-fluid">
                     <span class="navbar-brand mb-0 h1">Welcome to headstones.com</span>
@@ -30,6 +30,7 @@
                 </div>
             </nav>
         </div>
+
         <div class="row">
             <div class="btn-group" role="group" aria-label="Basic example">
                 <a href="login.php" role="button" class="btn btn-success ">log in</a>
@@ -38,59 +39,58 @@
                 <a href="profile.php" role="button" class="btn btn-success">profile</a>
             </div>
             <div class="row p-0">
-
-
             </div>
         </div>
+
         <div class="row">
-        <div class="container text-center h-100">
-            <div class="row">
-            <div class="col search-results">
-            </div>  
-</div>
-</div>
+            <div class="container text-center h-100">
+                <div class="row">
+                    <div class="col search-results">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <script>
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const searchText = urlParams.get('search');
-        $.get("/src/controller/FilterController?func=filter&search="+searchText, function(data, status) {
-                              
-                              console.log(data);
-                              console.log($.parseJSON(data));
-          
-                              $.each($.parseJSON(data), function(index, deceased) {
-                                var randomNum = Math.floor(Math.random() * 3) + 1;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const searchText = urlParams.get('search');
+    $.get("/src/controller/FilterController?func=filter&search=" + searchText, function(data, status) {
 
-                                  var row = ` <div class="row border p-2 border-dark m-3">
-                                                    <div class="col-3"><img src="/public/img/face${randomNum}.jpg" class="img-fluid" alt="/public/img/guy.jpg"></div>
-                                                    <div class="col m-2 text-start">
-                                                        <div class="row h5 ">${deceased.d_first_name}</div>
-                                                        <div class="row h5">${deceased.d_mi}</div>
-                                                        <div class="row h5">${deceased.d_last_name}</div>
-                                                        <div class="row h5">Date of Birth: ${deceased.dt_born}</div>
-                                                        <div class="row h5">Date of Death: ${deceased.dt_passed}</div>
-                                                        <div class="row"><input type="button" data-id="${deceased.dec_id}" class="btn btn-success get-obituary-button" value="View Obituary"></div>
-                                                    </div>
-                                                </div>`
-                                
-                                  console.log(deceased.d_first_name);
-                                  $('.search-results').append(row);
-          
-                              }); 
-                          });
+        console.log(data);
+        console.log($.parseJSON(data));
 
-                          $(document).on('click','.get-obituary-button', function() {
+        $.each($.parseJSON(data), function(index, deceased) {
+            var randomNum = Math.floor(Math.random() * 3) + 1;
 
-                            var id = $(this).data('id');
-                            window.location.href = "/view/obituary.php?id=" + id;
-});
-</script>
+            var row = `<div class="row border p-2 border-dark m-3">
+                            <div class="col-3"><img src="/public/img/face${randomNum}.jpg" class="img-fluid" alt="/public/img/guy.jpg"></div>
+
+                            <div class="col m-2 text-start">
+                                <div class="row h5 ">${deceased.d_first_name}</div>
+                                <div class="row h5">${deceased.d_mi}</div>
+                                <div class="row h5">${deceased.d_last_name}</div>
+                                <div class="row h5">Date of Birth: ${deceased.dt_born}</div>
+                                <div class="row h5">Date of Death: ${deceased.dt_passed}</div>
+                                <div class="row"><input type="button" data-id="${deceased.dec_id}" class="btn btn-success get-obituary-button" value="View Obituary"></div>
+                            </div>
+                        </div>`
+
+            console.log(deceased.d_first_name);
+            $('.search-results').append(row);
+        });
+    });
+
+    $(document).on('click', '.get-obituary-button', function() {
+        var id = $(this).data('id');
+        window.location.href = "/view/obituary.php?id=" + id;
+    });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
