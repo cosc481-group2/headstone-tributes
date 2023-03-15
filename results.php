@@ -58,9 +58,6 @@
     const searchText = urlParams.get('search');
     $.get("/src/controller/FilterController?func=filter&search=" + searchText, function(data, status) {
 
-        console.log(data);
-        console.log($.parseJSON(data));
-
         $.each($.parseJSON(data), function(index, deceased) {
             var randomNum = Math.floor(Math.random() * 3) + 1;
 
@@ -77,7 +74,6 @@
                             </div>
                         </div>`
 
-            console.log(deceased.d_first_name);
             $('.search-results').append(row);
         });
     });
