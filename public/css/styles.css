@@ -1,0 +1,33 @@
+.success {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.success {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+}
+
+.err {
+    color: red;
+}
+
+.err2 {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.profile-hr {
+    position: relative;
+    top: 20px;
+    border: none;
+    height: 12px;
+    margin-bottom: 50px;
+}

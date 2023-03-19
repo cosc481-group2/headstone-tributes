@@ -1,45 +1,7 @@
-<!DOCTYPE html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<?php include 'html_header.php';?>
+    <?php include 'header.php';?>
+<!------------------------CODE STARTS------------------------------->
 
-<html lang="en">
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Login</title>
-    <script>
-        $(document).ready(function () {
-            onLoadLogin();
-        });
-    </script>
-    <style>
-        .success {
-            text-align: center;
-            color: green;
-            font-weight: bold;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .err {
-            color: red;
-            text-align: center;
-        }
-
-    </style>
-</head>
-
-
-<body>
     <br>
     <h1 class="center"> Login </h1>
     <div class="card w-50 mx-auto my-4">
@@ -77,7 +39,7 @@
     </div>
 
     </div>
-    <p id="err" class="err">
+    <p id="err" class="err2">
         <!-- Error msg goes here -->
     </p>
     <p id="success_msg" class="success">
@@ -85,8 +47,12 @@
         <!-- this is a test error -->
 
     </p>
+    <script>
+        $(document).ready(function () {
+            onLoadLogin();
+        });
+    </script>  
+    <script src="../public/js/login.js?ver=<?php echo date("H:i:s"); ?>"></script>  
 
-</body>
-
-</html>
-<script src="/public/js/login.js"></script>
+<!------------------------CODE ENDS------------------------------->
+<?php include 'html_footer.php';?>
