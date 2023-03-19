@@ -36,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-md-12 col-xl-6 min-vh-100">
+            <div class="col-lg-12 col-xl-6 min-vh-100">
                 <div class="row h-25">
                     <div class="col bg-dark d-flex align-items-end p-3 text-white">
                         <div>
@@ -49,9 +49,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row h-auto">
                     <div class="col-xl-9 col-lg-12">
-                        <h3 style="color:#D4AF37;" class="p-3 fs-1 fw-bold">Obituary for:<br> <span class="ob-name"></span></h3>
+                        <h3 style="color:#702963;" class="p-3 display-5">Obituary for:<br> <span class="ob-name"></span></h3>
                         <p class="h4 p-3 lead fs-1 obituary"></p>
                     </div>
                 </div>
@@ -86,6 +86,7 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const obituaryId = urlParams.get('id');
+            const pictureId = urlParams.get('picid');
 
             var scheme = ["#483248","#8B8000","#4863A0","#838996","#B86500","#BAB86C"]
 
@@ -113,9 +114,12 @@
                 
                 $(".obituary").html(ob.obit);
 
-                var randomNum = Math.floor(Math.random() * 3) + 1;
+                if(pictureId != null) {   
+                    var randomNum = Math.floor(Math.random() * 3) + 1;
+                   $(".ob-photo").html("<img src='/public/img/face" + pictureId + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
+                }
 
-                $(".ob-photo").html("<img src='/public/img/face" + randomNum + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
+                
             });
 
             $.get("/src/controller/TributeController?func=getByDec&dec_id=" + obituaryId, function(data) {
