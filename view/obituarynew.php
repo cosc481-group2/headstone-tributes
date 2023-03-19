@@ -2,9 +2,9 @@
     <?php include 'header.php';?>
     <!------------------------CODE STARTS------------------------------->
 
-    <div class="container-fluid min-vh-100">
-        <div class="row min-vh-100">
-            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-6 text-white text-end text-uppercase p-3 min-vh-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-6 text-white text-end text-uppercase p-3 ">
                 <div class="fw-bold p-0 d-flex flex-column align-items-end">
                     <div class="obituary-pic ob-photo" >
                         <i class="bi bi-person-bounding-box" style="font-size:20rem;"></i>
@@ -12,35 +12,52 @@
                     <div class="text-warp p-0">
                         <span class="lh-1 display-1 fw-bold ob-name" style="font-size:9vh;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);"></span>
                     </div>
-                </div>
-                <div class="mt-4 fs-1 lh-1">
-                    <p>
-                        <span class="fw-bold">Birth:</span>
-                        <span class="birth-date"></span>
-                    </p>
-                    <p>
-                        <span class="fw-bold">Death:</span>
-                        <span class="death-date"></span>
-                    </p>
-                </div>
+                </div>       
             </div>
-            <div class="col-lg-12 col-xl-6 min-vh-100">
-                <div class="row h-25">
-                    <div class="col bg-dark d-flex align-items-end p-3 text-white">
-                        <div>
-                            <button class="btn btn-light btn-lg rounded-0 mb-5">Send Flowers</button>
-                            <h5 class="fs-3 fw-bold">Cementary Info:</h5>
-                            <p>
-                                <span class="cem-name fs-5"></span><br>
-                                <span class="cem-city fs-5"></span>, <span class="cem-country fs-5"></span>
-                            </p>
-                        </div>
+            <div class="col-md-12 col-xl-6 bg-dark text-white">
+                <div class="row mb-5">
+                    <div class="col p-3">
+                        <h1 class="h1">Create New Obituary</h1>
                     </div>
                 </div>
-                <div class="row h-auto">
-                    <div class="col-xl-9 col-lg-12">
-                        <h3 style="color:#702963;" class="p-3 display-5">Obituary for:<br> <span class="ob-name"></span></h3>
-                        <p class="h4 p-3 lead fs-1 obituary"></p>
+                <div class="row my-5">
+                    <div class="col">
+                        <div class="row">
+                            <div class="mb-3 col-lg-10 col-xl-5">
+                                <label for="first-name" class="form-label fs-3">First Name: </label>
+                                <input type="text" class="form-control form-control-lg shadow decease-name-form" id="first-name" placeholder="First Name of Deceased">
+                            </div>
+                            <div class="mb-3 col-2">
+                                <label for="middle-name" class="form-label fs-3">Initial: </label>
+                                <input type="text" class="form-control form-control-lg shadow decease-name-form" id="middle-name" placeholder="">
+                            </div>
+                            <div class="mb-3 col-lg-12 col-xl-5">
+                                <label for="last-name" class="form-label fs-3">Last Name: </label>
+                                <input type="text" class="form-control form-control-lg shadow decease-name-form" id="last-name" placeholder="Last Name of Deceased">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label for="middle-name" class="form-label fs-3">Birth: </label>
+                                <input type="date" class="form-control form-control-lg shadow birth-date-form" id="birth-date" placeholder="Enter Date of Birth">
+                            </div>
+                            <div class="mb-3 col">
+                                <label for="middle-name" class="form-label fs-3">Death: </label>
+                                <input type="date" class="form-control form-control-lg shadow death-date-form" id="death-date" placeholder="Enter Date of Death">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label for="exampleFormControlTextarea1" class="form-label fs-3">Enter Obituary:</label>
+                                <textarea class="form-control form-control-lg shadow" id="exampleFormControlTextarea1" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label for="additionalComments" class="form-label fs-3">Additional Comments:</label>
+                                <textarea class="form-control form-control-lg shadow" id="additionalComments" rows="3"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,13 +85,12 @@
     </div>
 
     <script>
-        
+        /*
         $(document).ready(function() {
-
+        
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const obituaryId = urlParams.get('id');
-            const pictureId = urlParams.get('picid');
 
             var scheme = ["#483248","#8B8000","#4863A0","#838996","#B86500","#BAB86C"]
 
@@ -102,12 +118,9 @@
                 
                 $(".obituary").html(ob.obit);
 
-                if(pictureId != null) {   
-                    var randomNum = Math.floor(Math.random() * 3) + 1;
-                   $(".ob-photo").html("<img src='/public/img/face" + pictureId + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
-                }
+                var randomNum = Math.floor(Math.random() * 3) + 1;
 
-                
+                $(".ob-photo").html("<img src='/public/img/face" + randomNum + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
             });
 
             $.get("/src/controller/TributeController?func=getByDec&dec_id=" + obituaryId, function(data) {
@@ -134,7 +147,7 @@
                 });
             });
         });
-
+        */
         function getMonthName(monthNumber) {
             const date = new Date();
             date.setMonth(monthNumber - 1);
@@ -142,9 +155,9 @@
             return date.toLocaleString('en-US', {
                 month: 'long',
             });
+        
         }
 
     </script>
-
 <!------------------------CODE ENDS------------------------------->
 <?php include 'html_footer.php';?>

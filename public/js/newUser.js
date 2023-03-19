@@ -81,7 +81,7 @@ function toLogin() {
 }
 
 function toIndex() {
-  window.location.href = "index.php";
+  window.location.href = "../index.php";
 }
 
 

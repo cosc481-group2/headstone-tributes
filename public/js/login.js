@@ -1,4 +1,4 @@
-src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
+//src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"; // JQuery
 
 
 function validateUser() {
@@ -99,7 +99,7 @@ function toRegistation() {
 }
 
 function toIndex() {
-  window.location.href = "index.php";
+  window.location.href = "../index.php";
 }
 
 function logout() {

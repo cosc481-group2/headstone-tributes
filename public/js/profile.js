@@ -178,5 +178,5 @@ function onLoadProfile() {
 
 // REDIRECT TO HOME
 function toIndex() {
-  window.location.href = "index.php";
+  window.location.href = "../index.php";
 }
