@@ -20,7 +20,7 @@ $(document).ready( function () {
 
     // Make Current Page Button Active
     $(".header-include .btn-group a").each(function() {
-        if(getFilePath() == $(this).attr('href').replace(".php","")) {
+        if(getFilePath().replace(".php","") == $(this).attr('href').replace(".php","")) {
             $(this).addClass("active");
         } else {
             $(this).removeClass("active");

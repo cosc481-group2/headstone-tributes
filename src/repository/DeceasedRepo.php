@@ -57,6 +57,25 @@ class DeceasedRepo
         ]);
     }
 
+    public function addGetId(Deceased $deceased)
+    {
+        $query = "INSERT into {$this->table} (user_id,cem_id,d_last_name,d_first_name,d_mi,dt_born,dt_passed,obit,comments) VALUES (?,?,?,?,?,?,?,?,?)";
+
+        $stmt = $this->pdo->prepare($query)->execute([
+            $deceased->getUserId(),
+            $deceased->getCemId(),
+            $deceased->getLastname(),
+            $deceased->getFirstname(),
+            $deceased->getMidInit(),
+            $deceased->getDtBorn(),
+            $deceased->getDtPassed(),
+            $deceased->getObit(),
+            $deceased->getComments()
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
+
     public function getById(int $id)
     {
         $query = "SELECT * FROM {$this->table} WHERE DEC_ID = ?";
@@ -70,7 +89,6 @@ class DeceasedRepo
     public function updateById(Deceased $deceased)
     {
         $query = "UPDATE {$this->table} SET "
-          . "dec_id = ?, "
           . "user_id = ?, "
           . "cem_id = ?, "
           . "d_last_name = ?, "
@@ -79,10 +97,10 @@ class DeceasedRepo
           . "dt_born = ?, "
           . "dt_passed = ?, "
           . "obit = ?, "
-          . "comments = ?";
+          . "comments = ? "
+          . "WHERE dec_id = ?";
 
         $stmt = $this->pdo->prepare($query)->execute([
-          $deceased->getDecId(),
           $deceased->getUserId(),
           $deceased->getCemId(),
           $deceased->getLastname(),
@@ -91,7 +109,8 @@ class DeceasedRepo
           $deceased->getDtBorn(),
           $deceased->getDtPassed(),
           $deceased->getObit(),
-          $deceased->getComments()
+          $deceased->getComments(),
+          $deceased->getDecId()
       ]);
     }
 

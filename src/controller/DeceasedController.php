@@ -2,8 +2,10 @@
 session_start();
 require_once '../service/DeceasedService.php';
 require_once '../model/Deceased.php';
+require_once '../model/Cemeteries.php';
 require_once '../core/TimeFunctions.php';
 
+use MODEL\Cemeteries;
 use SERVICE\DeceasedService;
 use MODEL\Deceased;
 
@@ -39,9 +41,10 @@ function addDeceased()
   // session_start();
   // $_SESSION('user_id') = 1; // todo confirm approach  
   $deceased = new Deceased();
-  $deceased->setDecId($_POST["dec_id"]);
+  $cemetery = new Cemeteries();
+  //$deceased->setDecId($_POST["dec_id"]);
   $deceased->setUserId($_POST["user_id"]);
-  $deceased->setCemId($_POST["cem_id"]);
+  //$deceased->setCemId($_POST["cem_id"]);
   $deceased->setLastname($_POST["d_last_name"]);
   $deceased->setFirstname($_POST["d_first_name"]);
   $deceased->setMidInit($_POST["d_mi"]);
@@ -61,9 +64,47 @@ function addDeceased()
     $deceased->setObit($_POST["obit"]);
     $deceased->setComments($_POST["comments"]);
 
+    $cemetery->setConId($_POST["con_id"]);
+    $cemetery->setCemName($_POST["cem_name"]);
+    $cemetery->setCemCity($_POST["cem_city"]);
+
     $service = new DeceasedService();
-    $service->addDeceased($deceased);
+    $service->addDeceasedWithCemetery($deceased, $cemetery);
     return;
+}
+
+function updateDeceased()
+{
+    $deceased = new Deceased();
+    $cemetery = new Cemeteries();
+
+    $deceased->setDecId($_POST["dec_id"]);
+    $deceased->setUserId($_POST["user_id"]);
+    $deceased->setCemId($_POST["cem_id"]);
+    $deceased->setLastname($_POST["d_last_name"]);
+    $deceased->setFirstname($_POST["d_first_name"]);
+    $deceased->setMidInit($_POST["d_mi"]);
+    
+    if (isValidDate($_POST["dt_born"]))
+        $deceased->setDtBorn($_POST["dt_born"]);
+    else
+        $deceased->setDtBorn(null);
+
+    if (isValidDate($_POST["dt_passed"]))
+        $deceased->setDtPassed($_POST["dt_passed"]);
+    else
+        $deceased->setDtPassed(null);
+
+    $deceased->setObit($_POST["obit"]);
+    $deceased->setComments($_POST["comments"]);
+
+    $cemetery->setCemId($_POST["cem_id"]);
+    $cemetery->setConId($_POST["con_id"]);
+    $cemetery->setCemName($_POST["cem_name"]);
+    $cemetery->setCemCity($_POST["cem_city"]);
+
+    $service = new DeceasedService();
+    $service->updateDeceasedCem($deceased, $cemetery);
 }
 
 function deleteDeceased()
@@ -102,6 +143,9 @@ else if (isset($_POST["func"]))
     {
         case 'add':
             addDeceased();
+            break;
+        case 'update':
+            updateDeceased();
             break;
         case 'del':
             deleteDeceased();

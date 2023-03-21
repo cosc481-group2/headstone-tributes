@@ -2,9 +2,9 @@
     <?php include 'header.php';?>
     <!------------------------CODE STARTS------------------------------->
 
-    <div class="container-fluid min-vh-100">
-        <div class="row min-vh-100">
-            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-6 text-white text-end text-uppercase p-3 min-vh-100">
+    <div class="container-fluid">
+        <div class="row" style="min-height:91vh;">
+            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-4 text-white text-end text-uppercase p-3">
                 <div class="fw-bold p-0 d-flex flex-column align-items-end">
                     <div class="obituary-pic ob-photo" >
                         <i class="bi bi-person-bounding-box" style="font-size:20rem;"></i>
@@ -24,11 +24,11 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-12 col-xl-6 min-vh-100">
+            <div class="col-lg-12 col-xl-8">
                 <div class="row h-25">
                     <div class="col bg-dark d-flex align-items-end p-3 text-white">
                         <div>
-                            <button class="btn btn-light btn-lg rounded-0 mb-5">Send Flowers</button>
+                            <button class="btn btn-light btn-lg rounded-0 mb-5 edit-obituary-button">Edit Obituary</button>
                             <h5 class="fs-3 fw-bold">Cementary Info:</h5>
                             <p>
                                 <span class="cem-name fs-5"></span><br>
@@ -76,6 +76,10 @@
             const obituaryId = urlParams.get('id');
             const pictureId = urlParams.get('picid');
 
+            if (!sessionStorage.getItem("is_login_ok")) {
+                $('.edit-obituary-button').hide();
+            }
+
             var scheme = ["#483248","#8B8000","#4863A0","#838996","#B86500","#BAB86C"]
 
             var randomNum = Math.floor(Math.random() * 6);
@@ -83,10 +87,8 @@
             $(".main-col, .tribute-header").css("background-color", scheme[randomNum]);
             
             $.get("/src/controller/FilterController?func=get&id=" + obituaryId,function(data) {
-                //console.log(data);
                 // turn data into JS Object
                 var ob = $.parseJSON(data);
-                console.log(ob);
 
                 $(".ob-name").html(ob.d_first_name + " " + ob.d_mi + " " + ob.d_last_name);
 
@@ -101,19 +103,23 @@
                 $(".cem-country").html(ob.country);
                 
                 $(".obituary").html(ob.obit);
+                
+                console.log($(".edit-obituary-button"));
+
+                $(".edit-obituary-button").data("id","j");
 
                 if(pictureId != null) {   
                     var randomNum = Math.floor(Math.random() * 3) + 1;
                    $(".ob-photo").html("<img src='/public/img/face" + pictureId + ".jpg' class='img-thumbnail' style='max-height:50vh;'  />");
                 }
-
-                
             });
+
+            if (!sessionStorage.getItem("is_login_ok")) {
+                $('.edit-obituary-button').hide();
+            }
 
             $.get("/src/controller/TributeController?func=getByDec&dec_id=" + obituaryId, function(data) {
                 var tributes = $.parseJSON(data);
-                console.log(tributes);
-
                 $.each(tributes, function(index, t) {
 
                     var card = `<div class="card m-md-2 m-xl-3 shadow">
@@ -133,6 +139,10 @@
                     $('.tribute-list').append(card);
                 });
             });
+
+            $(document).on('click','.edit-obituary-button', function() {
+                window.location.href = 'obituarynew?id=' + obituaryId + "&picid=" + pictureId;
+            });
         });
 
         function getMonthName(monthNumber) {
@@ -143,6 +153,8 @@
                 month: 'long',
             });
         }
+
+        
 
     </script>
 
