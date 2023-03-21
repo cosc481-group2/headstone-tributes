@@ -22,7 +22,7 @@
                                 var randomNum = Math.floor(Math.random() * 3) + 1;
 
                                   var row = ` <div class="row p-0 border-dark shadow m-5">
-                                                    <div class="col-xl-2 col-lg-4 p-0"><img src="/public/img/face${randomNum}.jpg" class="img-fluid rounded-4" style="height:25vh;"></div>
+                                                    <div class="col-xl-3 col-lg-4 p-0"><img src="/public/img/face${randomNum}.jpg" class="img-fluid rounded-4" style="height:25vh;"></div>
                                                     <div class="col p-3 m-2 text-start bg-secondary-subtle rounded-3">
                                                         <div class="row display-5">${deceased.d_first_name} ${deceased.d_mi} ${deceased.d_last_name}</div>
                                                         <div class="row h5">Date of Birth: ${deceased.dt_born}</div>
