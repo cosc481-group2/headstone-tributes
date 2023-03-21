@@ -35,6 +35,19 @@ class CemRepo
          ]);
     }
 
+    public function addGetId(Cemeteries $cemetery)
+    {
+        $query = "INSERT into {$this->table} (con_id,cem_name,cem_city) VALUES (?,?,?)";
+
+        $stmt = $this->pdo->prepare($query)->execute([
+            $cemetery->getConId(),
+            $cemetery->getCemName(),
+            $cemetery->getCemCity()
+         ]);
+
+         return $this->pdo->lastInsertId();
+    }
+
     // Get all rows from the database table
     public function getAll() : Array
     {
@@ -60,15 +73,13 @@ class CemRepo
         $query = "UPDATE {$this->table} SET "
                         . "CEM_NAME = ?, "
                         . "CON_ID = ?, "
-                        . "CEM_CITY = ?, "
-                        . "CEM_COMMENTS = ? "
+                        . "CEM_CITY = ? "
                         . "where CEM_ID = ?";
 
         $stmt = $this->pdo->prepare($query)->execute([
             $cemetery->getCemName(), 
             $cemetery->getConId(),
             $cemetery->getCemCity(),
-            $cemetery->getCemComments(),
             $cemetery->getCemId()
         ]);
     }

@@ -16,4 +16,4 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Petit+Formal+Script&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="bg-secondary-subtle">
