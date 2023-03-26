@@ -2,7 +2,10 @@ $(document).ready( function () {
 
     if(window.location.pathname == '/' || window.location.pathname == '/index.php' || window.location.pathname == '/index') {
         $(".header-include .btn-group a").each(function() {
-            $(this).attr('href', 'view/' + $(this).attr('href'));
+            if($(this).attr('href') != '/index') {
+                $(this).attr('href', 'view/' + $(this).attr('href'));
+            }
+            
         });
     }
 

@@ -4,27 +4,27 @@
 
     <div class="container-fluid">
         <div class="row" style="min-height:91vh;">
-            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-4 text-white text-end text-uppercase p-3">
+            <div style="background-color:#483248;" class="main-col col-md-12 col-xl-5 text-white text-end text-uppercase p-3">
                 <div class="fw-bold p-0 d-flex flex-column align-items-end">
                     <div class="obituary-pic ob-photo" >
                         <i class="bi bi-person-bounding-box" style="font-size:20rem;"></i>
                     </div>
                     <div class="text-warp p-0">
-                        <span class="lh-1 display-1 fw-bold ob-name" style="font-size:9vh;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);"></span>
+                        <span class="lh-1 display-1 fw-bold ob-name" style="font-size:8vh;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);"></span>
                     </div>
                 </div>
                 <div class="mt-4 fs-1 lh-1">
                     <p>
-                        <span class="fw-bold">Birth:</span>
-                        <span class="birth-date"></span>
+                        <span class="fw-bold fs-2">Birth:</span>
+                        <span class="birth-date "></span>
                     </p>
                     <p>
-                        <span class="fw-bold">Death:</span>
+                        <span class="fw-bold fs-2">Death:</span>
                         <span class="death-date"></span>
                     </p>
                 </div>
             </div>
-            <div class="col-lg-12 col-xl-8">
+            <div class="col-lg-12 col-xl-7">
                 <div class="row h-25">
                     <div class="col bg-dark d-flex align-items-end p-3 text-white">
                         <div>
@@ -46,22 +46,27 @@
             </div>
         </div>
         <div class="row bg-secondary-subtle p-4 justify-content-center">
-            <div class="col-xl-1 col-lg-12 p-0">
-               
-                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Edit Obituary</button>
-                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Add Tribute</button>
-                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Edit Tribute</button>
-                    <button type="button" class="btn btn-lg btn-secondary rounded-0 my-1 w-100">Delete Tribute</button>
-                
-            </div>
-            <div class="col-xl-6 col-lg-12 p-0">
+            <div class="col-xl-8 col-lg-12 p-0">
                 <div class="card border border-0 mx-xl-3 mx-md-0 my-xl-0 my-md-2">
-                    <div style="background-color:#483248;" class="tribute-header card-header p-md-1 p-xl-4 d-flex justify-content-evenly">
-                        <div>
+                    <div style="background-color:#483248;" class="tribute-header card-header p-md-1 p-xl-4">
+                        <div class="row">
                             <h1 style="font-family: 'Dancing Script', cursive;" class="text-white h1">Obituary Tributes:</h1>
                         </div>
                     </div>
-                    <div class="card-body tribute-list"></div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row tribute-msg"></div>
+                            <div class="row add-tribute-form">
+                                <div class="col mb-3">
+                                    <textarea class="form-control shadow deceased-tribute" rows="3"></textarea>
+                                    <button type="button" class="btn btn-small btn-secondary my-3 rounded-0 add-tribute-btn">Add A Tribute</button>
+                                </div>
+                            </div>
+                            <div class="row  p-0 m-0">
+                                <div class="col tribute-list"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,6 +83,10 @@
 
             if (!sessionStorage.getItem("is_login_ok")) {
                 $('.edit-obituary-button').hide();
+                $('.tribute-msg').html($('<div/>').html('Login first To add Tribute!!').addClass('alert alert-secondary rounded-0')).show();
+                $('.add-tribute-form').hide();
+            } else {
+                $('.tribute-msg').empty().hide();
             }
 
             var scheme = ["#483248","#8B8000","#4863A0","#838996","#B86500","#BAB86C"]
@@ -104,8 +113,6 @@
                 
                 $(".obituary").html(ob.obit);
                 
-                console.log($(".edit-obituary-button"));
-
                 $(".edit-obituary-button").data("id","j");
 
                 if(pictureId != null) {   
@@ -114,14 +121,47 @@
                 }
             });
 
-            if (!sessionStorage.getItem("is_login_ok")) {
-                $('.edit-obituary-button').hide();
-            }
+            getDeceasedTributes(obituaryId);
 
-            $.get("/src/controller/TributeController?func=getByDec&dec_id=" + obituaryId, function(data) {
+            
+            $(document).on('click','.edit-obituary-button', function() {
+                window.location.href = 'obituarynew?id=' + obituaryId + "&picid=" + pictureId;
+            });
+
+            $(document).on('click','.add-tribute-btn', function() {
+                var formdata = "func=add&user_id=" + sessionStorage.getItem("user_id") +"&dec_id="+ obituaryId +"&tribute=" + $(".deceased-tribute").val();
+
+                $.post("/src/controller/TributeController",formdata)
+                    .done(function(x) {
+                        getDeceasedTributes(obituaryId);
+                        $(".deceased-tribute").val('');
+                    });
+            });
+
+            $(document).on('click','.del-tribute-btn', function() {
+                var formdata = "func=del&id=" + $(this).data("id");
+                var obid = $(this).data("decid");
+                $.post("/src/controller/TributeController",formdata)
+                    .done(function(x) {
+                        getDeceasedTributes(obid);
+                    });
+            });
+        });
+
+        function getMonthName(monthNumber) {
+            const date = new Date();
+            date.setMonth(monthNumber - 1);
+
+            return date.toLocaleString('en-US', {
+                month: 'long',
+            });
+        }
+
+        function getDeceasedTributes(id) {
+            $('.tribute-list').empty();
+            $.get("/src/controller/TributeController?func=getByDec&dec_id=" + id, function(data) {
                 var tributes = $.parseJSON(data);
                 $.each(tributes, function(index, t) {
-
                     var card = `<div class="card m-md-2 m-xl-3 shadow">
                                     <div class="card-body">
                                         <figure>
@@ -132,25 +172,14 @@
                                                 ${t.dt_post}
                                             </figcaption>
                                         </figure>
-                                        
+                                        <div>
+                                            <i class="bi bi-trash del-tribute-btn" data-id="${t.id}" data-userid="${t.user_id}" data-decid="${t.dec_id}" title="Delete Tribute" style="cursor:pointer;${(!sessionStorage.getItem("is_login_ok") || (sessionStorage.getItem("user_id") != t.user_id)) ? 'display:none;' : '' }" ></i>    
+                                        </div>
                                     </div>
                                 </div>`
 
                     $('.tribute-list').append(card);
                 });
-            });
-
-            $(document).on('click','.edit-obituary-button', function() {
-                window.location.href = 'obituarynew?id=' + obituaryId + "&picid=" + pictureId;
-            });
-        });
-
-        function getMonthName(monthNumber) {
-            const date = new Date();
-            date.setMonth(monthNumber - 1);
-
-            return date.toLocaleString('en-US', {
-                month: 'long',
             });
         }
 
