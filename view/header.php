@@ -11,7 +11,7 @@
         <div class="btn-group p-0" role="group" aria-label="Basic example">
             <a href="/index" role="button" class="btn btn-success rounded-0">Home</a>
             <a href="login.php" role="button" class="btn btn-success rounded-0">Log In</a>
-            <a href="obituarynew" role="button" class="btn btn-success rounded-0 new-obituary-button">Add Obituary</a>
+            <a href="obituarynew" role="button" class="btn btn-success rounded-0 new-obituary-button">Add Deceased</a>
             <a href="contact.php" role="button" class="btn btn-success rounded-0">Contact Info</a>
             <a href="burial_info.php" role="button" class="btn btn-success rounded-0">Burial Info</a>
             <a href="will_advice.php" role="button" class="btn btn-success rounded-0">Will Advice</a>
