@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand h1" href="../index.php"><i class="bi bi-flower1"></i> HEADSTONES</a>
             <span class="navbar-brand align-items-center">
-                <button type="button" class="btn btn-sm btn-dark m-0 user-logout-button">Logout</button>
+                <button type="button" class="btn btn-sm btn-dark rounded-0 m-0 user-logout-button">Logout</button>
             </span>
         </div>
     </nav>

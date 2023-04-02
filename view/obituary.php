@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-xl-7">
-                <div class="row h-25">
+                <div class="row" style="height:250px;">
                     <div class="col bg-dark d-flex align-items-end p-3 text-white">
                         <div>
                             <button class="btn btn-light btn-lg rounded-0 mb-5 edit-obituary-button">Edit Obituary</button>
@@ -37,8 +37,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row h-auto">
-                    <div class="col-xl-10 col-lg-12">
+                <div class="row" style="min-height:75vh;">
+                    <div class="col-xl-11 col-lg-12">
                         <h3 style="color:#702963;" class="p-3 display-5">Obituary for:<br> <span class="ob-name"></span></h3>
                         <p class="h4 p-3 lead fs-1 obituary"></p>
                     </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="row bg-secondary-subtle p-4 justify-content-center">
-            <div class="col-xl-8 col-lg-12 p-0">
+            <div class="col-xl-9 col-lg-12 p-0">
                 <div class="card border border-0 mx-xl-3 mx-md-0 my-xl-0 my-md-2">
                     <div style="background-color:#483248;" class="tribute-header card-header p-md-1 p-xl-4">
                         <div class="row">
