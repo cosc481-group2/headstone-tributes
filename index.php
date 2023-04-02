@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row my-5">
     <div class="col">
-    <div class="card shadow">
+    <div class="card shadow rounded-0">
         <div class="card-body p-5">
             <div class=" h3 m-2 m-3 d-flex text-center"> Headstones.com allows people to create pages for their loved ones for all to see, after the page has been created other loved ones can come by and leave tributes which let them talk about what that person meant to them and share fond memories.</div>
             <div class="row border p-2 border-dark m-3">
@@ -49,7 +49,7 @@
     <div class="row my-5">
         <div class="col-xl-6 col-lg-12 p-3">
             <div class="card rounded-0 shadow" style="min-height:60vh;">
-                <div class="card-header bg-success text-light">
+                <div class="card-header rounded-0 bg-success text-light">
                     <h3 class="h3">Burial Planning and Information:</h3>
                 </div>
                 <div class="card-body">
@@ -66,7 +66,7 @@
         </div>
         <div class="col-xl-6 col-lg-12 p-3">
             <div class="card rounded-0 shadow" style="min-height:60vh;">
-                <div class="card-header bg-success text-light">
+                <div class="card-header rounded-0 bg-success text-light">
                     <h3 class="h3">Will Advice:</h3>
                 </div>
                 <div class="card-body">
