@@ -6,15 +6,17 @@
     background-image: url('./public/img/graveyard.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 600px;
   ">
-    <div class="mask py-3" style="background-color: rgba(0, 0, 0, 0.6);">
-        <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-white w-50 p-3">
+    <div class="mask py-5" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class=" align-items-center h-100">
+            <div class="row justify-content-center text-white">
+                <div class="col-xl-6 col-lg-12">
                 <h1 class="mb-3">Search for Deceased:</h1>
                 <div class ="d-flex">
                     <input type="text" class="form-control search-deceased-field rounded-0" id="searchForDeceased" >
                     <button class = "btn btn-success search-obituary-button rounded-0"> Submit </button>
+                </div>
                 </div>
             </div>
         </div>
