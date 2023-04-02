@@ -91,8 +91,8 @@
                     <h2 class="text-center display-5">Headstones.com is located in the Southfield, MI area</h2>
                 </div>
             </div>
-            <div class="h-100">
-                <iframe class="m-5 shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2050.7985877690107!2d-83.28532757803637!3d42.48192544372566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824b9e143a6b8b1%3A0xa3f2ec1e8a53b0c2!2sSouthfield%2C%20MI!5e0!3m2!1sen!2sus!4v1680441399981!5m2!1sen!2sus" width="1200" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="ratio ratio-16x9">
+                <iframe class="shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2050.7985877690107!2d-83.28532757803637!3d42.48192544372566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824b9e143a6b8b1%3A0xa3f2ec1e8a53b0c2!2sSouthfield%2C%20MI!5e0!3m2!1sen!2sus!4v1680441399981!5m2!1sen!2sus"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
