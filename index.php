@@ -14,8 +14,8 @@
                 <div class="col-xl-6 col-lg-12">
                 <h1 class="mb-3">Search for Deceased:</h1>
                 <div class ="d-flex">
-                    <input type="text" class="form-control search-deceased-field rounded-0" id="searchForDeceased" >
-                    <button class = "btn btn-success search-obituary-button rounded-0"> Submit </button>
+                    <input type="text" class="form-control search-deceased-field rounded-start-5 rounded-end-0" id="searchForDeceased" >
+                    <button class = "btn btn-success search-obituary-button rounded-start-0 rounded-end-5">Submit</button>
                 </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@
             <div class="row border p-2 border-dark m-3">
                 <div class="col-3"><img src="/public/img/guy.jpg" class="img-fluid" alt="/public/img/guy.jpg"></div>
                 <div class="col m-2 text-start">
-                    <div class="row h5 ">John smith</div>
-                    <div class="row h5">Detroit Michigan</div>
-                    <div class="row h5">Date of Birth: 10/26/1954 - Date of Death 4-16-2022</div>
-                    <div class="row">John was an amazing husband father and mentor he brought wisdom to all that crossed his path. He will be greatly missed by his 3 sons and 2 daughters and his many students. He was taken from us much sooner than he should have been, but he is in a much better place now.</div>
+                    <div class="row h5 ">John Smith</div>
+                    <div class="row h5">Detroit, Michigan</div>
+                    <div class="row h5">Date of Birth: 10/26/1954 - Date of Death: 4-16-2022</div>
+                    <div class="row">John was an amazing husband, father and mentor he brought wisdom to all that crossed his path. He will be greatly missed by his 3 sons and 2 daughters and his many students. He was taken from us much sooner than he should have been, but he is in a much better place now.</div>
                 </div>
             </div>
             <div class="border p-2 border-dark d-flex justify-content-left align-items-left h-100">
