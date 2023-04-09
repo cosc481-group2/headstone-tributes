@@ -15,7 +15,7 @@
                 <h1 class="mb-3">Search for Deceased:</h1>
                 <div class ="d-flex">
                     <input type="text" class="form-control search-deceased-field rounded-start-5 rounded-end-0" id="searchForDeceased" >
-                    <button class = "btn btn-success search-obituary-button rounded-start-0 rounded-end-5">Submit</button>
+                    <button class = "btn btn-success search-obituary-button rounded-start-0 rounded-end-5">Search</button>
                 </div>
                 </div>
             </div>
@@ -90,11 +90,11 @@
         <div class="col" style="min-height:60vh;">
             <div class="row">
                 <div class="col">
-                    <h2 class="text-center display-5">Headstones.com is located in the Southfield, MI area</h2>
+                    <h2 class="text-center display-5">Headstones.com is located in the Farmington Hills, MI area</h2>
                 </div>
             </div>
             <div class="ratio ratio-16x9">
-                <iframe class="shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2050.7985877690107!2d-83.28532757803637!3d42.48192544372566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824b9e143a6b8b1%3A0xa3f2ec1e8a53b0c2!2sSouthfield%2C%20MI!5e0!3m2!1sen!2sus!4v1680441399981!5m2!1sen!2sus"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47077.52269516946!2d-83.41220869779976!3d42.48421396725672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ae2f8c7e3c7f%3A0x1978ab227e003bbc!2sFarmington%20Hills%2C%20MI!5e0!3m2!1sen!2sus!4v1681068070746!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
