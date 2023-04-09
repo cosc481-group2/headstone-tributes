@@ -31,3 +31,29 @@
     height: 12px;
     margin-bottom: 50px;
 }
+
+.accordion-button:not(.collapsed) {
+    background-color: #198754;
+}
+
+.accordion-button:not(.collapsed) {
+    color: white;
+}
+
+.accordion {
+    --bs-accordion-btn-focus-box-shadow: #bcfcbc40;
+}
+
+.accordion-button {
+    background-color: rgb(235, 235, 235);
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-bottom-left-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+}
+
+.accordion-item .accordion-button {
+    border-bottom-left-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+}
