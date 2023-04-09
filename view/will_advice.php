@@ -2,8 +2,11 @@
     <?php include 'header.php';?>
     <!------------------------CODE STARTS------------------------------->
 
-    <div class="accordion" id="accordionPanelsStayOpen">
+    <div class="container p-5 text-center">
+    
+    <h1 class="fs-1">Will Advice FAQs</h1>
 
+    <div class="accordion text-start shadow my-3" id="accordionPanelsStayOpen">
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -145,6 +148,8 @@
             </div>
         </div>
  
+    </div>
+
     </div>
 
 <!------------------------CODE ENDS------------------------------->

@@ -3,8 +3,8 @@
     <!------------------------CODE STARTS------------------------------->
 
     <br>
-    <h1 class="center profile-hr">Profile</h1>
-    <div class="card w-50 mx-auto my-4">
+    <h1 class="center m-2 display-5">User Profile</h1>
+    <div class="card w-50 mx-auto my-4 shadow">
 
         <div class="card-body bg-secondary-subtle">
             <p>First Name: &nbsp

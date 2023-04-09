@@ -4,8 +4,8 @@
 
     <div class="container-fluid text-center" style="background-image: url('/public/img/graveyard-blur.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size:cover; min-height:92vh;">
         <div class="row d-flex justify-content-center">
-            <div class="col-xl-9 col-lg-12 justify-content-center">
-                <div class="search-results"></div>
+            <div class="col-xl-6 col-lg-12 justify-content-center">
+                <div class="search-results py-5"></div>
             </div>
         </div>
     </div>
@@ -21,18 +21,32 @@
             if(deceased_rec.length != 0) {
 
                 $.each(deceased_rec, function(index, deceased) {
+                    console.log(deceased);
                     var randomNum = Math.floor(Math.random() * 3) + 1;
 
-                    var row = ` <div class="row p-0 border-dark shadow m-5">
-                                    <div class="col-xl-3 col-lg-6 p-0"><img src="/public/img/face${randomNum}.jpg" class="img-fluid rounded-4" style="height:25vh;"></div>
-                                    <div class="col p-3 text-start bg-secondary-subtle rounded-3">
-                                        <div class="row display-5">${deceased.d_first_name} ${deceased.d_mi} ${deceased.d_last_name}</div>
-                                        <div class="row h5">Date of Birth: ${deceased.dt_born}</div>
-                                        <div class="row h5">Date of Death: ${deceased.dt_passed}</div>
+                    var borndt = new Date(deceased.dt_born).toLocaleDateString();
+                    var deathdt = new Date(deceased.dt_passed).toLocaleDateString();
+
+                    var row = `
+                                <div class="card bg-transparent border-0">
+                                    <div class="card-body bg-transparent">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <input type="button" data-pic="${randomNum}" data-id="${deceased.dec_id}" class="btn btn-success get-obituary-button" value="View Obituary">
+                                            <div class="col d-flex justify-content-end">
+                                                <img src="/public/img/face${randomNum}.jpg" class="img-fluid" style="height:175px;width:150px;">
                                             </div>
+                                            <div class="col-xl-9 col-lg-12">
+                                                <div class="card rounded-0">
+                                                    <div class="card-header display-5 d-flex justify-content-between">
+                                                        <div>${deceased.d_first_name} ${deceased.d_mi} ${deceased.d_last_name}</div>
+                                                        <input type="button" data-pic="${randomNum}" data-id="${deceased.dec_id}" class="btn btn-success btn-small get-obituary-button" value="View Obituary">
+                                                    </div>
+                                                    <div class="card-body p-4">
+                                                        <div class="row fs-5">${borndt} - ${deathdt}</div>
+                                                        <div class="row fs-5">${deceased.cem_name.trim()} - ${deceased.cem_city.trim()}, ${deceased.country}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>`
                     $('.search-results').append(row);
