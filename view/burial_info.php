@@ -4,13 +4,13 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center bg-secondary-subtle h-50">
-        <div class="col-xl-6 col-lg-12 p-5 text-center">
+        <div class="col-xl-8 col-lg-12 p-5 text-center">
             <h1>8 Tips for Funeral Planning</h1>
             <p class="text-muted">Reference: https://www.aarp.org/home-family/friends-family/info-2020/funeral-planning-tips.html</p>
         </div>
     </div>
     <div class="row justify-content-center bg-secondary-subtle h-50">
-        <div class="col-xl-6 col-lg-12 p-5 ">
+        <div class="col-xl-8 col-lg-12 p-5 ">
             <h2>Learn what’s involved</h2>
             <p class="fs-5">
                 To plan a funeral, you need to know what happens at one. There are three general components: preparing the corpse, holding the ceremony and handling the interment.
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="row justify-content-center bg-dark h-50">
-        <div class="col-xl-6 col-lg-12 p-5 text-white">
+        <div class="col-xl-8 col-lg-12 p-5 text-white">
             <h2>Plan in advance, but don’t pay in advance</h2>
 
             <p class="fs-5">
@@ -34,13 +34,13 @@
         </div>
     </div>
     <div class="row justify-content-center bg-secondary-subtle h-50">
-        <div class="col-xl-6 col-lg-12 p-5 ">
+        <div class="col-xl-8 col-lg-12 p-5 ">
             <h2>Find out average costs</h2>
             <p class="fs-5">The FCA has links on its site to itemized lists of funeral costs, by state. Check it out so you have an idea of what you can expect to pay in your area for everything from a casket to the cost of that final hearse ride to the cemetery.</p>
         </div>
     </div>
     <div class="row justify-content-center bg-dark h-50">
-        <div class="col-xl-6 col-lg-12 p-5 text-white">
+        <div class="col-xl-8 col-lg-12 p-5 text-white">
             <h2>Shop around</h2>
 
             <p class="fs-5">
@@ -53,13 +53,13 @@
         </div>
     </div>
     <div class="row justify-content-center bg-secondary-subtle h-50">
-        <div class="col-xl-6 col-lg-12 p-5 ">
+        <div class="col-xl-8 col-lg-12 p-5 ">
             <h2>Understand the package deal</h2>
             <p class="fs-5">Funeral homes sell packages of goods and services, but sometimes there’s more wrapped into them than you want. Sometimes they don’t have all the goods and services you want. For example, a gravestone and cemetery plot may not be included in a package. Ask for an itemized list upfront, with prices for each service or item.</p>
         </div>
     </div>
     <div class="row justify-content-center bg-dark h-50">
-        <div class="col-xl-6 col-lg-12 p-5 text-white">
+        <div class="col-xl-8 col-lg-12 p-5 text-white">
             <h2>Buy only what you want</h2>
 
             <p class="fs-5">
@@ -70,13 +70,13 @@
         </div>
     </div>
     <div class="row justify-content-center bg-secondary-subtle h-50">
-        <div class="col-xl-6 col-lg-12 p-5 ">
+        <div class="col-xl-8 col-lg-12 p-5 ">
             <h2>Consider joining a memorial society</h2>
             <p class="fs-5">These nonprofit organizations offer price surveys of local funeral homes and guidance in planning a funeral. Many negotiate discounts at local funeral homes for members. They’re like a buyers club for funerals. One-time membership fees vary but generally cost less than $50. Check the FCA’s state-by-state directory of local affiliates to find one near you.</p>
         </div>
     </div>
     <div class="row justify-content-center bg-dark h-50">
-        <div class="col-xl-6 col-lg-12 p-5 text-white">
+        <div class="col-xl-8 col-lg-12 p-5 text-white">
             <h2>Talk it over and write it down</h2>
 
             <p class="fs-5">
