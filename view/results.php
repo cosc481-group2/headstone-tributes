@@ -4,7 +4,7 @@
 
     <div class="container-fluid text-center" style="background-image: url('/public/img/graveyard-blur.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size:cover; min-height:92vh;">
         <div class="row d-flex justify-content-center">
-            <div class="col-xl-6 col-lg-12 justify-content-center">
+            <div class="col-xl-9 col-lg-12 justify-content-center">
                 <div class="search-results py-5"></div>
             </div>
         </div>
