@@ -14,16 +14,17 @@ class Filter implements JsonSerializable
     private ?int $cem_id;
     private string $d_last_name;
     private string $d_first_name;
-    private string $d_mi;
+
     private ?string $dt_born;
     private ?string $dt_passed;
-    private string $obit;
-    private string $comments;
-    private string $str2search;
-    private string $cem_name;
-    private string $cem_city;
-    private string $country;
-  private string $cem_comments;
+    private ?string $obit;
+    private ?string $comments;
+    private ?string $str2search;
+    private ?string $cem_name;
+    private ?string $cem_city;
+    private ?string $country;
+    private ?string $cem_comments;
+    private ?string $d_mi;
 
 
   public function getStrSearch() : string
@@ -35,18 +36,18 @@ class Filter implements JsonSerializable
   {
       $this->str2search = $str2search;
   }
-    public function getCemComments() : string
+    public function getCemComments() : ?string
     {
         return $this->cem_comments;
     }
 
-    public function setCemComments(string $cem_comments) 
+    public function setCemComments(?string $cem_comments) 
     {
         $this->cem_comments = $cem_comments;
     }
-    public function getCemName() : string
+    public function getCemName() : ?string
     {
-        return $this->cem_city;
+        return $this->cem_name;
     }
 
     public function setCemName(string $cem_name) 
@@ -55,12 +56,12 @@ class Filter implements JsonSerializable
     }
     
     
-    public function getCemCity() : string
+    public function getCemCity() : ?string
     {
         return $this->cem_city;
     }
 
-    public function setCemCity(string $cem_city) 
+    public function setCemCity(?string $cem_city) 
     {
         $this->cem_city = $cem_city;
     }
@@ -124,12 +125,12 @@ class Filter implements JsonSerializable
         $this->d_last_name = $last_name;
     }
 
-    public function getMidInit() : string
+    public function getMidInit() : ?string
     {
         return $this->d_mi;
     }
 
-    public function setMidInit(string $midInit)
+    public function setMidInit(?string $midInit)
     {
         $this->d_mi = $midInit;
     }
@@ -154,22 +155,22 @@ class Filter implements JsonSerializable
     }
 
 
-    public function getObit() : string
+    public function getObit() : ?string
     {
         return $this->obit ;
     }
 
-    public function setObit(string $obit)
+    public function setObit(?string $obit)
     {
         $this->obit = $obit;
     }
 
-    public function getComments() : string
+    public function getComments() : ?string
     {
         return $this->comments ;
     }
 
-    public function setComments(string $comments)
+    public function setComments(?string $comments)
     {
         $this->comments = $comments;
     }

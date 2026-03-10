@@ -7,9 +7,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     vim
 
-# Install PDO and MYSQLi drivers into container
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-RUN docker-php-ext-install pdo pdo_mysql
+# Install PDO PostgreSQL driver into container
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
 
 # Enables .htaccess to rewrite apache settings
 RUN a2enmod rewrite

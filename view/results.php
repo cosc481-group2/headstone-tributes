@@ -42,7 +42,7 @@
                                                     </div>
                                                     <div class="card-body p-4">
                                                         <div class="row fs-5">${borndt} - ${deathdt}</div>
-                                                        <div class="row fs-5">${deceased.cem_name.trim()} - ${deceased.cem_city.trim()}, ${deceased.country}</div>
+                                                         <div class="row fs-5">${deceased.cem_name ? deceased.cem_name.trim() + ' - ' + (deceased.cem_city ? deceased.cem_city.trim() : '') + ', ' + (deceased.country || '') : 'Cemetery not listed'}</div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -15,7 +15,7 @@ class DB
         $username = "will"; 
         $password = "pw";
         $dbName = "testdb1"; 
-        $instanceHost = "34.162.157.82";
+        $instanceHost = "54.198.26.122";
         $instanceUnixSocket = '/cloudsql/proj-481:us-east5:w481';
         $environemt = getenv("APPENV");
 
@@ -24,12 +24,12 @@ class DB
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ];
 
-        $dsn = sprintf('mysql:dbname=%s;host=%s', $dbName, $instanceHost);
+        $dsn = sprintf('pgsql:dbname=%s;host=%s', $dbName, $instanceHost);
 
         // Connect using UNIX sockets
         if($environemt == 'prod')
         {
-            $dsn = sprintf('mysql:dbname=%s;unix_socket=%s',$dbName,$instanceUnixSocket);
+            $dsn = sprintf('pgsql:dbname=%s;unix_socket=%s',$dbName,$instanceUnixSocket);
         }
 
         try {
